@@ -1,0 +1,15 @@
+@use './partials/global' as *;
+@use './partials/variables' as *;
+@use './partials/mixins' as *;
+
+.header {
+    @include flex($direction: column, $j-content: center, $a-items: center);
+    background-color: $BandSite-Black;
+    &__logo {
+    }
+    &__nav {
+    }
+    &__list {
+        @include flex();
+    }
+}
