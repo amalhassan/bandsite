@@ -1,0 +1,11 @@
+// Flexbox mixin 
+@mixin flex ($direction: row, $j-content: null, $j-items: null, $j-self: null, $a-content: null, $a-items: null, $a-self: null) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $j-content;
+    justify-items: $j-items;
+    justify-self:  $j-self;
+    align-content: $a-content;
+    align-items: $a-items;
+    align-self: $a-self;
+}
