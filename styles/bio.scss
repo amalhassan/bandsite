@@ -5,11 +5,48 @@
 .header {
     @include flex($direction: column, $j-content: center, $a-items: center);
     background-color: $BandSite-Black;
-    &__logo {
-    }
+    // border: 2px solid red;
+    padding-top: 24px;
     &__nav {
+        width: 100%;
+        font-size: 1.3rem;
+        color: $White;
     }
     &__list {
-        @include flex();
+        @include flex($j-content: space-around, $a-items: center);
+    }
+    &__item {
+        padding: 16px 0;
+        width: 50%;
+        text-align: center;
+        &:hover {
+            font-weight: bold;
+            border-bottom: 5px solid $White;
+        }
+    }
+}
+.hero {
+    background-image: url(../assets/images/hero-bio.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 30vh;
+    color: $White;
+    &__banner {
+        @include flex($j-content: flex-start, $a-items: center);
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+.about {
+    max-width: 95%;
+    margin: 24px auto;
+    border: 2px solid red;
+    &__title {
+
+    }
+    &__image {
+        width: 100%;
+        
     }
 }
