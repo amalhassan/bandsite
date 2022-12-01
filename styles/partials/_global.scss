@@ -6,7 +6,19 @@
     margin: 0;
     padding: 0;   
 }
-
+body {
+    font-family: $avenir-regular;
+    font-weight: $light;
+    font-size: 1rem;
+}
 li {
     list-style: none;
+}
+a, a:active, a:visited, a:hover, a:link {
+    color: $Silver;
+    text-decoration: none;
+}
+.active, .active:active, .active:visited, .active:hover, .active:link {
+    color: $White;
+    border-bottom: 5px solid $White;
 }

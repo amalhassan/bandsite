@@ -10,7 +10,6 @@
     &__nav {
         width: 100%;
         font-size: 1.3rem;
-        color: $White;
     }
     &__list {
         @include flex($j-content: space-around, $a-items: center);
@@ -20,7 +19,6 @@
         width: 50%;
         text-align: center;
         &:hover {
-            font-weight: bold;
             border-bottom: 5px solid $White;
         }
     }
@@ -37,16 +35,42 @@
         height: 100%;
         background-color: rgba(0, 0, 0, 0.5);
     }
+    &__title {
+        font-size: 2rem;
+        font-weight: $demibold;
+        padding-left: 16px;
+    }
 }
 .about {
+    @include flex($direction: column);
     max-width: 95%;
+    height: 130vh;
     margin: 24px auto;
     border: 2px solid red;
     &__title {
-
+        font-size: 2rem;
+        padding-top: 8px;
+        padding-bottom: 16px;
     }
     &__image {
         width: 100%;
-        
+        padding-bottom: 16px;
+    }
+    &__quote {
+        padding-bottom: 16px;
+    }
+    &__quotee {
+
+    }
+    &__subheading {
+        padding-top: 24px;
+        padding-bottom: 16px;
+    }
+    &__container {
+        @include flex($direction: column, $j-content: space-between);
+        font-size: 1.3rem;
+        font-weight: normal;
+        border: 2px red solid; 
+        height: 52%;
     }
 }

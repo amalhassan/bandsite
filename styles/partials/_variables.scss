@@ -10,6 +10,36 @@ $BandSite-DarkBlack: #000000;
 $Mercury: #E1E1E1;
 $Alabaster: #FAFAFA;
 
-//Responsive width
+//Typography
+$light: 300;
+$normal: 400;
+$demibold: 500;
+$bold: 700;
+@font-face {
+    font-family: 'AvenirNext Regular';
+    font-weight: $normal;
+    font-style: normal;
+    src: url(../../assets/fonts/AvenirNextLTPro-Regular.otf) format("opentype"),
+    url(../../assets/fonts/AvenirNextLTPro.ttf) format(truetype);
+}
+@font-face {
+    font-family: 'AvenirNextDemi';
+    font-weight: $demibold;
+    font-style: normal;
+    src: url(../../assets/fonts/AvenirNextLTPro-Demi.otf) format("opentype"),
+    url(../../assets/fonts/AvenirNextLTProDemi.ttf) format(truetype);
+}
+@font-face {
+    font-family: 'AvenirNextBold';
+    font-weight: $bold;
+    font-style: normal;
+    src: url(../../assets/fonts/AvenirNextLTPro-Bold.otf) format("opentype"),
+    url(../../assets/fonts/AvenirNextLTProBold.ttf) format(truetype);
+}
+$avenir-regular: "AvenirNextRegular", sans-serif;
+$avenir-demi: "AvenirNextDemi", sans-serif;
+$avenir-bold: "AvenirNextBold", sans-serif;
+
+//Responsive width for tablet and desktop. The default styling is mobile.
 $tablet-width: 768px;
 $desktop: 1280px;
