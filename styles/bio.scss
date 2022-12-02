@@ -4,9 +4,10 @@
 
 .header {
     @include flex($direction: column, $j-content: center, $a-items: center);
+    @include padding($top: $mobile-heading-p-t);
     background-color: $BandSite-Black;
     // border: 2px solid red;
-    padding-top: 24px;
+    // padding-top: 24px;
     &__nav {
         width: 100%;
         font-size: 1.3rem;
@@ -15,7 +16,7 @@
         @include flex($j-content: space-around, $a-items: center);
     }
     &__item {
-        padding: 16px 0;
+        @include padding($top: $mobile-p-t, $bottom: $mobile-p-b);
         width: 50%;
         text-align: center;
         &:hover {
@@ -38,39 +39,104 @@
     &__title {
         font-size: 2rem;
         font-weight: $demibold;
-        padding-left: 16px;
+        @include padding($left: $mobile-p-l);
     }
 }
 .about {
     @include flex($direction: column);
     max-width: 95%;
-    height: 130vh;
-    margin: 24px auto;
-    border: 2px solid red;
+    height: max-content;
+    margin: 0 auto;
     &__title {
         font-size: 2rem;
-        padding-top: 8px;
-        padding-bottom: 16px;
+        @include padding($top: $mobile-heading-p-t, $bottom: $mobile-p-b);
     }
     &__image {
         width: 100%;
-        padding-bottom: 16px;
+        @include padding($bottom: $mobile-p-b);
     }
     &__quote {
-        padding-bottom: 16px;
+        @include padding($bottom: $mobile-p-b);
+        font-family: $avenir-demi;
+        &:before {
+            content: open-quote;
+        }
+        &:after {
+            content: close-quote;
+        }
+        quotes: "“" "”";
+    }
+    &__nested-quote {
+        quotes: "‘" "’";
     }
     &__quotee {
-
+        font-style: normal;
+        font-family: $avenir-demi;
     }
     &__subheading {
-        padding-top: 24px;
-        padding-bottom: 16px;
+        font-weight: $demibold;
+        @include padding($top: $mobile-heading-p-t, $bottom: $mobile-p-b);
     }
     &__container {
         @include flex($direction: column, $j-content: space-between);
-        font-size: 1.3rem;
+        font-size: 1.34rem;
         font-weight: normal;
-        border: 2px red solid; 
-        height: 52%;
+        row-gap: 20px;
+    }
+}
+.gallery {
+    max-width: 95%;
+    height: max-content;
+    margin: 24px auto;
+    &__title {
+        @include padding($top: $mobile-heading-p-t, $bottom: $mobile-p-b);
+    }
+    &__container {
+        @include flex($direction: column);
+        gap: 20px;
+    }
+}
+.footer {
+    background-color: $BandSite-Black;
+    color: $White;
+    @include padding($left: $mobile-p-l);
+    &__social-media {
+
+    }
+    &__title {
+        
+    }
+    &__icons {
+
+    }
+    &__icon {
+
+    }
+    &__contact-container {
+        
+    }
+    &__content {
+        
+    }
+    &__contact-name {
+
+    }
+    &__brand {
+
+    }
+    &__address {
+        font-style: normal;
+    }
+    &__email {
+
+    }
+    &__logo {
+
+    }
+    &__copyright {
+
+    }
+    &__title, &__contact-container, &__content {
+        @include padding($top: $mobile-p-t, $bottom: $mobile-p-b);
     }
 }

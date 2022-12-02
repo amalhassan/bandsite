@@ -9,6 +9,21 @@
     align-items: $a-items;
     align-self: $a-self;
 }
+//Padding mixin
+@mixin padding($top: null, $right: null, $bottom: null, $left:null) {
+    padding-top: $top;
+    padding-right: $right;
+    padding-bottom: $bottom;
+    padding-left: $left;
+}
+
+//Margin mixin
+@mixin margin($top: null, $right: null, $bottom: null, $left:null) {
+    margin-top: $top;
+    margin-right: $right;
+    margin-bottom: $bottom;
+    margin-left: $left;
+}
 
 @mixin tablet {
     @media (min-width: $tablet) {
