@@ -6,21 +6,40 @@
     @include flex($direction: column, $j-content: center, $a-items: center);
     @include padding($top: $mobile-heading-p-t);
     background-color: $BandSite-Black;
-    // border: 2px solid red;
-    // padding-top: 24px;
+    @include tablet {
+        @include flex();
+    }
+    &__logo {
+        @include padding($top: $td-p-t, $right: $td-p-r, $bottom: $td-p-b, $left: $td-p-l);
+    }
     &__nav {
         width: 100%;
         font-size: 1.3rem;
     }
     &__list {
         @include flex($j-content: space-around, $a-items: center);
+        height: fit-content;
+        @include tablet {
+            @include flex ($j-content: flex-start, $a-content: center);
+            width: 30%;
+        }
+        // border: green solid 2px;
     }
     &__item {
-        @include padding($top: $mobile-p-t, $bottom: $mobile-p-b);
         width: 50%;
         text-align: center;
         &:hover {
             border-bottom: 5px solid $White;
+        }
+    }
+    &__active-link, &__active-link:active, &__active-link:visited, &__active-link:link {
+        color: $White;
+    }
+    &__label {
+        // border: red solid 2px;
+        width: 50%;
+        @include tablet {
+            width: 50%;   
         }
     }
 }
@@ -85,14 +104,17 @@
     }
 }
 .gallery {
-    max-width: 95%;
     height: max-content;
-    margin: 24px auto;
-    &__title {
-        @include padding($top: $mobile-heading-p-t, $bottom: $mobile-p-b);
-    }
     &__container {
         @include flex($direction: column);
+        background-color: $Alabaster;
+    }
+    &__title {
+        @include padding($top: $mobile-heading-p-t, $left: $mobile-p-l);
+    }
+    &__container-img {
+        @include flex($direction: column);
+        @include padding($top: $mobile-p-t, $left: $mobile-p-l, $bottom: $mobile-p-b, $right: $mobile-p-r);
         gap: 20px;
     }
 }
@@ -104,37 +126,56 @@
 
     }
     &__title {
-        
+        font-size: 1.8rem;
+        font-weight: $demibold;
+        @include padding($top: $mobile-heading-p-t);
     }
     &__icons {
-
+        @include flex($j-content: space-between);
+        width: 35%;
     }
     &__icon {
-
+        
+    }
+    &__icon-img {
+        height: 3vh;
     }
     &__contact-container {
-        
+        @include flex($direction: column);
+        row-gap: 16px;
     }
-    &__content {
-        
+    &__contact {
+        @include flex($direction: column);
+        row-gap: 16px;
+    }
+    &__contact-title {
+
     }
     &__contact-name {
-
+        font-family: $avenir-demi;
+        @include padding($top: $mobile-heading-p-t);
     }
     &__brand {
-
+        font-family: $avenir-demi;
     }
-    &__address {
+    &__address-container {
+   
+    }
+    &__location {
         font-style: normal;
     }
     &__email {
 
     }
+    &__logo-container {
+        @include margin($top: 50px);
+    }
     &__logo {
-
+        width: 114px;
+        height: 19px;
     }
     &__copyright {
-
+        @include padding($top: $mobile-p-t, $bottom: $mobile-p-b);
     }
     &__title, &__contact-container, &__content {
         @include padding($top: $mobile-p-t, $bottom: $mobile-p-b);

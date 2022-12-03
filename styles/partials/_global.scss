@@ -18,7 +18,9 @@ a, a:active, a:visited, a:hover, a:link {
     color: $Silver;
     text-decoration: none;
 }
-.active, .active:active, .active:visited, .active:hover, .active:link {
-    color: $White;
+.active {
     border-bottom: 5px solid $White;
+    @include tablet {
+        width: 30%;
+    }
 }

@@ -14,8 +14,8 @@
             </div>
             <nav class="header__nav">
                 <ul class="header__list">
-                    <a class="header__item active" href="#"><li >Biography</li></a>
-                    <a class="header__item" href="#"><li>Shows</li></a>
+                    <li class="header__item active"><a class="header__label header__active-link" href="#">Biography</a></li>
+                    <li class="header__item"><a class="header__label" href="#">Shows</a></li>
                 </ul>
             </nav>
         </header>
@@ -64,51 +64,68 @@
                 </div>
             </section>
             <section class="gallery">
-                <h2 class="gallery__title">Photo Gallery</h2>
                 <div class="gallery__container">
-                    <img src="./assets/images/Photo-gallery-1.jpg" alt="concert goers facing stage">
-                    <img src="./assets/images/Photo-gallery-2.jpg" alt="girl waving raised both arms">
-                    <img src="./assets/images/Photo-gallery-3.jpg" alt="hands in the air">
-                    <img src="./assets/images/Photo-gallery-4.jpg" alt="girl waving one arm">
-                    <img src="./assets/images/Photo-gallery-5.jpg" alt="fireworks at the front of stage">
-                    <img src="./assets/images/Photo-gallery-6.jpg" alt="singer waving arm">
-                    <img src="./assets/images/Photo-gallery-7.jpg" alt="far view of the stage">
-                    <img src="./assets/images/Photo-gallery-8.jpg" alt="hand over dj set">
-                    <img src="./assets/images/Photo-gallery-9.jpg" alt="ribbons floating over arms in the air">
+                    <h2 class="gallery__title">Photo Gallery</h2>
+                    <div class="gallery__container-img">
+                        <img src="./assets/images/Photo-gallery-1.jpg" alt="concert goers facing stage">
+                        <img src="./assets/images/Photo-gallery-2.jpg" alt="girl waving raised both arms">
+                        <img src="./assets/images/Photo-gallery-3.jpg" alt="hands in the air">
+                        <img src="./assets/images/Photo-gallery-4.jpg" alt="girl waving one arm">
+                        <img src="./assets/images/Photo-gallery-5.jpg" alt="fireworks at the front of stage">
+                        <img src="./assets/images/Photo-gallery-6.jpg" alt="singer waving arm">
+                        <img src="./assets/images/Photo-gallery-7.jpg" alt="far view of the stage">
+                        <img src="./assets/images/Photo-gallery-8.jpg" alt="hand over dj set">
+                        <img src="./assets/images/Photo-gallery-9.jpg" alt="ribbons floating over arms in the air">
+                    </div>
                 </div>
             </section>
         </main>
         <footer class="footer">
             <section class="footer__social-media">
-                <h3 class="footer__title">Get In Touch</h3>
+                <h3 class="footer__title">Get in Touch</h3>
                 <div class="footer__icons">
-                    <a class="footer__icon" href="http://www.instagram.com"><img src="./assets/icons/Icon-instagram.svg"/></a>
-                    <a class="footer__icon" href="http://www.facebook.com"><img src="./assets/icons/Icon-facebook.svg"/></a>
-                    <a class="footer__icon" href="http://www.twitter.com"><img src="./assets/icons/Icon-twitter.svg"/></a>
+                    <a class="footer__icon" href="http://www.instagram.com"><img class="footer__icon-img" src="./assets/icons/Icon-instagram.svg"/></a>
+                    <a class="footer__icon" href="http://www.facebook.com"><img class="footer__icon-img" src="./assets/icons/Icon-facebook.svg"/></a>
+                    <a class="footer__icon" href="http://www.twitter.com"><img class="footer__icon-img" src="./assets/icons/Icon-twitter.svg"/></a>
                 </div>
             </section>
             <div class="footer__contact-container">
-                <section class="footer__content">
-                    <h3 footer="footer__contact-name">Cam Adams</h3>
-                    <p footer="footer__brand">The Bees Knees Management</p>
-                    <address class="footer__address">503 Broadway Penthouse, New York, NY 10012, USA</address>
+                <section class="footer__contact">
+                    <div class="footer__contact-title">
+                        <h4 class="footer__contact-name">Cam Adams</h4>
+                        <p class="footer__brand">The Bees Knees Management</p>
+                    </div>
+                    <div class="footer__address-container">
+                        <address class="footer__location">503 Broadway Penthouse,</address>
+                        <address class="footer__location">New York, NY 10012, USA</address>
+                    </div>
                     <email class="footer__email">info@thebeesknees.com</email>
                 </section>
-                <section class="footer__content">
-                    <h3 class="footer__contact-name">Pearl Gregg</h3>
-                    <p class="footer__brand">Limitless Artist Group</p>
-                    <address class="footer__address">Booking Agent for US / South America / Japan</address>
+                <section class="footer__contact">
+                    <div class="footer__contact-title">
+                        <h4 class="footer__contact-name">Pearl Gregg</h4>
+                        <p class="footer__brand">Limitless Artist Group</p>
+                    </div>
+                    <div class="footer__address">
+                        <address class="footer__location">Booking Agent for</address>
+                        <address class="footer__location">US / South America / Japan</address>
+                    </div>
                     <email class="footer__email">pearl.gregg@limitlessag.com</email>
                 </section>
-                <section class="footer__content">
-                    <h3 class="footer__contact-name">Carson Whyte</h3>
-                    <p class="footer__brand">ARCH Entertainment</p>
-                    <address class="footer__address">Booking Agent for UK / EU / AU</address>
+                <section class="footer__contact">
+                    <div class="footer__contact-title">
+                        <h4 class="footer__contact-name">Carson Whyte</h4>
+                        <p class="footer__brand">ARCH Entertainment</p>
+                    </div>
+                    <div class="footer__address">
+                        <address class="footer__location">Booking Agent for</address>
+                        <address class="footer__location">UK / EU / AU</address>
+                    </div>
                     <email class="footer__email">cwhyte@archentertainment.com</email>
                 </section>
             </div>
-            <div class="footer__logo">
-                <object data="./assets/logos/Logo-bandsite.svg" type="image/svg+xml" width="114px" height="19px"></object>
+            <div class="footer__logo-container">
+                <object class="footer__logo" data="./assets/logos/Logo-bandsite.svg" type="image/svg+xml" width="114px" height="19px"></object>
             </div>
             <div class="footer__copyright">Copyright The Bees Knees &copy 2021 All Rights Reserved</div>
         </footer>

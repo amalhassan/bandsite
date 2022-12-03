@@ -27,7 +27,7 @@ $td-heading-p-t: 36px;
 //Typography
 $light: 300;
 $normal: 400;
-$demibold: 500;
+$demibold: 600;
 $bold: 700;
 @font-face {
     font-family: 'AvenirNext Regular';
@@ -55,5 +55,5 @@ $avenir-demi: "AvenirNextDemi", sans-serif;
 $avenir-bold: "AvenirNextBold", sans-serif;
 
 //Responsive width for tablet and desktop. The default styling is mobile.
-$tablet-width: 768px;
+$tablet: 768px;
 $desktop: 1280px;
