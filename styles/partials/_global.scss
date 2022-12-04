@@ -8,7 +8,6 @@
 }
 body {
     font-family: $avenir-regular;
-    font-weight: $light;
     font-size: 1rem;
 }
 li {
@@ -18,9 +17,17 @@ a, a:active, a:visited, a:hover, a:link {
     color: $Silver;
     text-decoration: none;
 }
-.active {
-    border-bottom: 5px solid $White;
-    @include tablet {
-        width: 30%;
+// Section titles styling
+.section-title {
+    font-family: $avenir-demi;
+    font-size: $m-header;
+    line-height: $m-header-line-height;
+    &--main {
+        color: $BandSite-Black;
+        @include padding($top: $mobile-heading-p-t, $bottom: $mobile-p-b);
+        @include tablet {
+            font-size: $td-section-header;
+            line-height: $td-sh-line-height;
+        }
     }
 }

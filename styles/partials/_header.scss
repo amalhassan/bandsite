@@ -1,0 +1,75 @@
+@use './variables' as *;
+@use './mixins' as *;
+/*** Header styling ***/
+.logo {
+    width: 180px;
+    @include desktop {
+        width: 150px;
+    }
+    &--footer {
+        @include tablet {
+          position: absolute;
+          top: 70px;
+          right: 25px;
+        }
+        @include desktop {
+          right: 180px;
+          top: 80px;
+        }
+    }
+}
+.header {
+    @include flex($direction: column, $j-content: center, $a-items: center);
+    background-color: $BandSite-Black;
+    @include tablet {
+        @include flex();
+    }
+    @include desktop {
+        @include padding($left: $d-p-l);
+    }
+    &__logo-box {
+        @include padding($top: $td-p-t, $right: $td-p-r, $bottom: $td-p-b, $left: $td-p-l);
+    }
+    &__nav {
+        @include flex($direction: column);
+        width: 100%;
+        font-size: 1.3rem;
+        @include tablet {
+            align-self: end;
+        }
+    }
+    &__list {
+        @include flex($j-content: space-around);
+        @include tablet {
+            @include flex ($j-content: space-between);
+            max-width: fit-content;
+            column-gap: 30px;
+        }
+    }
+    &__item {
+        @include flex($j-content: center, $a-items: center);
+        width: 50%;
+        text-align: center;
+        @include padding($bottom: $mobile-p-b);
+        &:hover {
+            border-bottom: 5px solid $White;
+        }
+        @include tablet {
+            @include padding($bottom: $td-p-b); 
+        }
+    }
+    &__label--active-state, &__label--active-state:active, &__label--active-state:visited, &__label--active-state:link {
+        font-family: $avenir-regular;
+        color: $White;
+        font-family: $avenir-demi;
+    }
+    &__label--hover-state {
+        @extend .header__label--active-state;
+        &:hover {
+            color: $Mercury;
+        }
+    }
+}
+.active {
+    border-bottom: 5px solid $White;
+}

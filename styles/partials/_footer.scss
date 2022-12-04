@@ -1,0 +1,104 @@
+@use './global' as *;
+@use './variables' as *;
+@use './mixins' as *;
+/*** Footer styling ***/
+.footer {
+    background-color: $BandSite-Black;
+    color: $White;
+    font-size: $m-footer-copy;
+    line-height: $m-footer-line-height;
+    font-weight: $normal;
+    position: relative;
+    @include padding($top: $mobile-p-t, $right: $mobile-p-r, $bottom: $mobile-p-b, $left: $mobile-p-l);
+    @include tablet {
+        font-size: $t-footer-copy;
+        line-height: $t-footer-line-height;
+    }  
+    &__container {
+        @include desktop {
+            max-width: 65%;
+            @include padding($left: $d-p-l);
+        }
+    }
+    &__social-media {
+        @include tablet {
+            @include flex($a-items: baseline);
+        } 
+        @include desktop {
+            justify-content: space-around;
+            column-gap: 10px;
+            max-width: 65%;
+        }
+    }
+    &__title {
+        @extend .section-title;
+        @include padding($top: $mobile-heading-p-t, $bottom: $mobile-p-b);
+        @include tablet {
+            font-size: $td-section-header;
+            line-height: $td-sh-line-height;
+            @include padding($top: $td-heading-p-t);
+        }
+    }
+    &__icons {
+        @include flex($j-content: space-between);
+        width: 30%;
+        @include tablet {
+            justify-content: space-around;
+        }
+        @include desktop {
+            justify-content: space-between;
+            width: 40%;
+            column-gap: 10px;  
+        }
+    }
+    &__icon-img {
+        height: 3vh;
+        @include tablet {
+            height: 3.3vh;
+        }
+    }
+    &__contact-container {
+        @include flex($direction: column);
+        row-gap: 35px;
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            column-gap: 5px;
+        }
+        @include desktop {
+            justify-content: space-around;
+        }
+    }
+    &__contact {
+        @include flex($direction: column);
+        row-gap: 30px;
+    }
+    &__contact-title {
+        font-family: $avenir-demi;
+        @include padding($top: $mobile-p-t);
+        @include tablet {
+            padding-top:0;
+        }
+    }
+    &__location {
+        font-style: normal;
+    }
+    &__email, &__email:link  {
+        color: $White;
+    }
+    &__logo-box {
+        @include margin($top: 50px);
+    }
+    &__copyright {
+        @include padding($top: $mobile-p-t);
+        @include desktop {
+            @include padding ($left: 2%);
+        }
+    }
+    &__title, &__contact-container, &__content {
+        @include padding($top: $mobile-p-t, $bottom: $mobile-p-b);
+        @include tablet {
+            @include padding($top: $td-p-t, $bottom: $td-p-b);
+        }
+    }
+}
