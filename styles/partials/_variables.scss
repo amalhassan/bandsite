@@ -1,21 +1,19 @@
 // Primary colors
-
 $BandSite-Black: #323232;
 $Silver: #AFAFAF;
 $White: #FFFFFF;
 
 // Secondary colors
-
 $BandSite-DarkBlack: #000000;
 $Mercury: #E1E1E1;
 $Alabaster: #FAFAFA;
 
 //padding mobile variables
-$mobile-p-r: 16px;
-$mobile-p-l: 16px;
-$mobile-p-t: 16px;
-$mobile-p-b: 16px;
-$mobile-heading-p-t: 24px;
+$mobile-p-r: 20px;
+$mobile-p-l: 20px;
+$mobile-p-t: 20px;
+$mobile-p-b: 30px;
+$mobile-heading-p-t: 40px;
 
 // //padding tablet and destop
 $td-p-r: 48px;
@@ -23,8 +21,9 @@ $td-p-l: 48px;
 $td-p-t: 36px;
 $td-p-b: 36px;
 $td-heading-p-t: 36px;
+$d-p-l: 100px;
 
-//Typography
+// Typography
 $light: 300;
 $normal: 400;
 $demibold: 600;
@@ -53,6 +52,36 @@ $bold: 700;
 $avenir-regular: "AvenirNextRegular", sans-serif;
 $avenir-demi: "AvenirNextDemi", sans-serif;
 $avenir-bold: "AvenirNextBold", sans-serif;
+
+// Mobile font sizes and line height
+$m-header: 2.3rem;
+$m-header-line-height: 2.5rem;
+$m-sub-header: 1.4rem;
+$m-subheader-line-height: 22px;
+$m-body-copy: 1.125rem;
+$m-body-line-height: 1.5rem;
+$m-footer-copy: 1.125rem;
+$m-footer-line-height: 1.5rem;
+$m-label-buttons: 10px;
+$m-label-button-line-height: 20px;
+
+// Tablet and desktop font size and line height
+$t-header: 2.8rem;
+$t-header-line-height: 3.25rem;
+$d-header: 4.5rem;
+$d-header-line-height: 3.75rem;
+$td-section-header: 2.625rem;
+$td-sh-line-height: 3.5rem;
+$td-sub-header: 1.875rem;
+$td-subheader-line-height: 2.5rem;
+$td-body-copy: 1.5rem;
+$td-body-line-height: 1.9rem;
+$t-footer-copy: 1.13rem;
+$t-footer-line-height: 1.5rem;
+$d-footer-copy: 1.5rem;
+$d-footer-line-height: 1.75rem;
+$td-label-buttons: 12px;
+$td-label-button-line-height: 20px;
 
 //Responsive width for tablet and desktop. The default styling is mobile.
 $tablet: 768px;

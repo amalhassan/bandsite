@@ -2,45 +2,56 @@
 @use './partials/variables' as *;
 @use './partials/mixins' as *;
 
+.logo {
+    width: 180px;
+}
 .header {
     @include flex($direction: column, $j-content: center, $a-items: center);
-    @include padding($top: $mobile-heading-p-t);
     background-color: $BandSite-Black;
     @include tablet {
         @include flex();
     }
-    &__logo {
+    @include desktop {
+        @include padding($left: $d-p-l);
+    }
+    &__logo-box {
         @include padding($top: $td-p-t, $right: $td-p-r, $bottom: $td-p-b, $left: $td-p-l);
     }
     &__nav {
+        @include flex($direction: column);
         width: 100%;
         font-size: 1.3rem;
+        @include tablet {
+            align-self: end;
+        }
     }
     &__list {
-        @include flex($j-content: space-around, $a-items: center);
-        height: fit-content;
+        @include flex($j-content: space-around);
         @include tablet {
-            @include flex ($j-content: flex-start, $a-content: center);
-            width: 30%;
+            @include flex ($j-content: space-between);
+            max-width: fit-content;
+            column-gap: 30px;
         }
-        // border: green solid 2px;
     }
     &__item {
+        @include flex($j-content: center, $a-items: center);
         width: 50%;
         text-align: center;
+        @include padding($bottom: $mobile-p-b);
         &:hover {
             border-bottom: 5px solid $White;
+        }
+        @include tablet {
+            width: fit-content;
+            @include padding($bottom: $td-p-b); 
         }
     }
     &__active-link, &__active-link:active, &__active-link:visited, &__active-link:link {
         color: $White;
+        font-family: $avenir-demi;
     }
     &__label {
-        // border: red solid 2px;
-        width: 50%;
-        @include tablet {
-            width: 50%;   
-        }
+        font-family: $avenir-regular;
     }
 }
 .hero {
@@ -49,34 +60,85 @@
     background-position: center;
     height: 30vh;
     color: $White;
+    @include tablet {
+        height: 60vh;
+    }
+    @include tablet {
+        height: 80vh;
+    }
     &__banner {
         @include flex($j-content: flex-start, $a-items: center);
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.4);
     }
     &__title {
-        font-size: 2rem;
-        font-weight: $demibold;
+        font-family: $avenir-demi;
+        font-size: $m-header;
+        line-height: $m-header-line-height;
         @include padding($left: $mobile-p-l);
+        @include tablet {
+            font-size: $t-header;
+            line-height: $t-header-line-height;
+            @include padding($left: $td-p-l);
+        }
+        @include desktop {
+            font-size: $d-header;
+            line-height: $d-header-line-height;
+            @include padding($left: 150px, $bottom: 160px);
+        }
     }
 }
 .about {
     @include flex($direction: column);
     max-width: 95%;
-    height: max-content;
     margin: 0 auto;
+    font-size: $m-body-copy;
+    line-height: $m-body-line-height;
+    font-style: $light;
+    @include padding ($bottom: $mobile-p-b);
+    @include tablet {
+        font-size: $td-body-copy;
+        line-height: $td-body-line-height;
+        @include padding ($bottom: $td-p-b);
+    }
+    @include desktop {
+        @include padding($left: $d-p-l, $right: $d-p-l);
+    }
     &__title {
-        font-size: 2rem;
+        font-family: $avenir-demi;
+        font-size: $m-header;
+        line-height: $m-header-line-height;
+        color: $BandSite-Black;
         @include padding($top: $mobile-heading-p-t, $bottom: $mobile-p-b);
+        @include tablet {
+            font-size: $td-section-header;
+            line-height: $td-sh-line-height;
+        }
+    }
+    &__content {
+        @include tablet {
+            align-self: center;
+            // border: 2px red solid;
+            width: 89%;
+        }
     }
     &__image {
         width: 100%;
         @include padding($bottom: $mobile-p-b);
+        @include tablet {
+            @include padding($bottom: $td-p-b);
+        }
     }
     &__quote {
         @include padding($bottom: $mobile-p-b);
         font-family: $avenir-demi;
+        font-size: 1.4rem;
+        color: $BandSite-Black;
+        @include tablet {
+            font-size: $td-sub-header;
+            line-height: $td-sh-line-height;
+        }
         &:before {
             content: open-quote;
         }
@@ -89,95 +151,184 @@
         quotes: "‘" "’";
     }
     &__quotee {
-        font-style: normal;
+        font-size: 1.4rem;
         font-family: $avenir-demi;
+        font-style: normal;
+        color: $BandSite-Black;
     }
     &__subheading {
-        font-weight: $demibold;
+        font-size: $m-sub-header;
+        line-height: $m-subheader-line-height;
+        color: $BandSite-DarkBlack;
         @include padding($top: $mobile-heading-p-t, $bottom: $mobile-p-b);
+        @include tablet {
+            font-size: $td-sub-header;
+            @include padding($top: $td-heading-p-t, $bottom: $td-p-b); 
+        }
     }
     &__container {
+        color: $BandSite-Black;
         @include flex($direction: column, $j-content: space-between);
-        font-size: 1.34rem;
-        font-weight: normal;
         row-gap: 20px;
+        @include tablet {
+            flex-direction: row;
+            column-gap: 20px;
+        }
     }
 }
 .gallery {
-    height: max-content;
     &__container {
         @include flex($direction: column);
         background-color: $Alabaster;
+        @include tablet {
+            @include padding($bottom: $td-p-b);
+        }
+        @include desktop {
+            @include padding($left: $d-p-l, $right: $d-p-l);
+        }
     }
     &__title {
+        font-family: $avenir-demi;
+        font-size: $m-header;
+        line-height: $m-header-line-height;
+        color: $BandSite-Black;
         @include padding($top: $mobile-heading-p-t, $left: $mobile-p-l);
+        @include tablet {
+            font-size: $td-section-header;
+            line-height: $td-sh-line-height;
+            @include padding($top: $td-heading-p-t, $left: $td-p-l);
+        }
     }
     &__container-img {
         @include flex($direction: column);
         @include padding($top: $mobile-p-t, $left: $mobile-p-l, $bottom: $mobile-p-b, $right: $mobile-p-r);
         gap: 20px;
+        @include tablet {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 30px;
+            @include padding($top: $td-p-t, $left: $td-p-l, $bottom: $td-p-b, $right: $td-p-r);
+        }
+    }
+    &__item {
+        @include tablet {
+            width: 30%;
+        }
+        @include desktop {
+            width: 31%;
+        }
     }
 }
 .footer {
     background-color: $BandSite-Black;
     color: $White;
-    @include padding($left: $mobile-p-l);
+    font-size: $m-footer-copy;
+    line-height: $m-footer-line-height;
+    font-weight: $normal;
+    position: relative;
+    @include padding($top: $mobile-p-t, $right: $mobile-p-r, $bottom: $mobile-p-b, $left: $mobile-p-l);
+    @include tablet {
+        font-size: $t-footer-copy;
+        line-height: $t-footer-line-height;
+    }  
+   
+    &__container {
+        @include desktop {
+            max-width: 65%;
+            @include padding($left: $d-p-l);
+        }
+    }
     &__social-media {
-
+        @include tablet {
+            @include flex($a-items: baseline);
+        } 
+        @include desktop {
+            justify-content: space-around;
+            column-gap: 10px;
+            max-width: 65%;
+        }
     }
     &__title {
-        font-size: 1.8rem;
-        font-weight: $demibold;
-        @include padding($top: $mobile-heading-p-t);
+        font-weight: $normal;
+        font-size: $m-header;
+        @include padding($top: $mobile-heading-p-t, $bottom: $mobile-p-b);
+        @include tablet {
+            font-size: $t-header;
+            line-height: $t-footer-line-height;
+            @include padding($top: $td-heading-p-t);
+        }
     }
     &__icons {
         @include flex($j-content: space-between);
-        width: 35%;
+        width: 30%;
+        @include tablet {
+            justify-content: space-around;
+        }
+        @include desktop {
+            justify-content: space-between;
+            width: 40%;
+            column-gap: 10px;  
+        }
     }
-    &__icon {
-        
+    &__icon {  
     }
     &__icon-img {
         height: 3vh;
+        @include tablet {
+            height: 3.8vh;
+        }
     }
     &__contact-container {
         @include flex($direction: column);
-        row-gap: 16px;
+        row-gap: 35px;
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            column-gap: 5px;
+        }
+        @include desktop {
+            justify-content: space-around;
+        }
     }
     &__contact {
         @include flex($direction: column);
-        row-gap: 16px;
+        row-gap: 30px;
     }
     &__contact-title {
-
+        font-family: $avenir-demi;
     }
     &__contact-name {
-        font-family: $avenir-demi;
-        @include padding($top: $mobile-heading-p-t);
     }
     &__brand {
-        font-family: $avenir-demi;
     }
     &__address-container {
-   
     }
     &__location {
         font-style: normal;
     }
     &__email {
-
     }
-    &__logo-container {
+    &__logo-box {
         @include margin($top: 50px);
     }
+    &__logo-container {
+    }
     &__logo {
-        width: 114px;
-        height: 19px;
+        @include tablet {
+          position: absolute;
+          top: 60px;
+          right: 25px;
+        }
+        @include desktop {
+          right: 180px;
+        }
     }
     &__copyright {
-        @include padding($top: $mobile-p-t, $bottom: $mobile-p-b);
     }
     &__title, &__contact-container, &__content {
         @include padding($top: $mobile-p-t, $bottom: $mobile-p-b);
+        @include tablet {
+            @include padding($top: $td-p-t, $bottom: $td-p-b);
+        }
     }
 }
