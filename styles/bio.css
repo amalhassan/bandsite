@@ -379,13 +379,18 @@ a, a:active, a:visited, a:hover, a:link {
 }
 .about__image {
   width: 100%;
-  aspect-ratio: 3/2;
   object-fit: cover;
   padding-bottom: 1.25rem;
 }
 @media (min-width: 768px) {
   .about__image {
     padding-bottom: 2.25rem;
+    max-height: 590px;
+  }
+}
+@media (min-width: 1280px) {
+  .about__image {
+    max-height: 620px;
   }
 }
 .about__quote {

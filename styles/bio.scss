@@ -69,11 +69,14 @@
     }
     &__image {
         width: 100%;
-        aspect-ratio: 3 / 2;
         object-fit: cover;
         @include padding($bottom: $mobile-p-b);
         @include tablet {
             @include padding($bottom: $td-p-b);
+            max-height: 590px;
+        }
+        @include desktop {
+            max-height: 620px;
         }
     }
     &__quote {
