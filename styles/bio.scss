@@ -87,7 +87,7 @@
             line-height: $td-sh-line-height;
         }
         @include desktop {
-            width: 82.5%;
+            width: 81%;
         }
         &:before {
             content: open-quote;
@@ -143,7 +143,7 @@
     }
     &__container-img {
         @include flex($direction: column);
-        @include padding($top: $mobile-p-t, $left: $mobile-p-l, $bottom: $mobile-p-b, $right: $mobile-p-r);
+        @include padding($left: $mobile-p-l, $bottom: $mobile-p-b, $right: $mobile-p-r);
         gap: 20px;
         @include tablet {
             flex-direction: row;
@@ -156,6 +156,7 @@
         filter: grayscale(1);
         &:hover {
             filter:grayscale(0);
+            cursor: pointer;
         }
         @include tablet {
             width: 30%;
@@ -163,6 +164,116 @@
         @include desktop {
             width: 31%;
         }
+    }
+}
+
+.conversation {
+    @include padding($left: $mobile-p-l, $bottom: $mobile-p-b, $right: $mobile-p-r); 
+    // border: solid 2px red;
+    &__title {
+
+    }
+    &__form-container{
+        @include flex();
+        // border: solid 2px green;
+        gap: 1.25rem;
+        border-bottom: 2px solid $Mercury;
+        @include padding($bottom: $mobile-p-b);
+    }
+    &__avatar{
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: 5%;
+        width: 50px;
+        height: 50px;
+        background-color: $Mercury;
+        @include margin($top: 20px);
+        
+    }
+    &__form{
+        @include flex($direction: column);
+        // border: 2px solid yellow;
+        flex-grow: 2;
+        row-gap: 20px;
+    }
+    &__field {
+        @include flex($direction: column);
+        row-gap: 5px;
+    }
+    &__label{
+        font-family: $avenir-demi;
+        color: $Silver;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+    &__textbox {
+        padding: 12px;
+        background-color: $Alabaster;
+        border: 1px solid $Mercury;
+        &::placeholder{
+            font-family: $avenir-regular;
+            color: $BandSite-Black;
+            opacity: 1;
+            font-size: 1.2rem;
+        }
+        @include tablet{
+            padding: 16px;
+        }
+    }
+    &__textbox--name{}
+    &__textbox--comment{
+        resize: none;
+    }
+    &__button{
+        @extend .conversation__label;
+        color: $White;
+        background-color: $BandSite-Black;
+        padding: 15px;
+        border-radius: 5px;
+        border-style: none;
+        font-size: 1.3rem;
+        cursor: pointer;
+    }
+    &__comment-container{
+        // @include flex();
+        // @include padding($top: $mobile-p-t);
+        // border-top: $Silver 2px solid;
+    }
+    &__comment-wrapper {
+        // border: 2px solid blue;
+        @include flex($j-content: space-between);
+        @include padding($bottom: $mobile-p-b);
+        border-bottom: 1px solid $Mercury;
+    }
+    &__title-section{
+        @include flex($j-content:space-between);
+        @include padding($top: $mobile-p-t, $bottom: $mobile-p-b);
+        // border: solid 2px red;
+        
+    }
+    &__name {
+        color: $BandSite-Black;
+        font-size: 1.1rem;
+    }
+    &__date {
+        color: $Silver;
+        font-size: 1.2rem;
+    }
+    &__comment-div {
+        // border: solid 2px green;
+        word-break: break-word;
+        max-width: 85%;
+        align-self: flex-end;
+    }
+    &__text {
+        // background-color: yellow;
+        color: $BandSite-Black;
+        font-family: $avenir-regular;
+        line-height: $m-body-line-height;
+        width:96%;
+        font-size: 1.25rem;
+    
     }
 }
 
