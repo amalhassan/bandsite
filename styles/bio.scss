@@ -6,38 +6,6 @@
 /*** Bio - Hero styling ***/
 .hero {
     background-image: url(../assets/images/hero-bio.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 30vh;
-    color: $White;
-    @include tablet {
-        height: 60vh;
-    }
-    @include tablet {
-        height: 80vh;
-    }
-    &__banner {
-        @include flex($j-content: flex-start, $a-items: center);
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-    &__title {
-        font-family: $avenir-demi;
-        font-size: $m-header;
-        line-height: $m-header-line-height;
-        @include padding($left: $mobile-p-l);
-        @include tablet {
-            font-size: $t-header;
-            line-height: $t-header-line-height;
-            @include padding($left: $td-p-l);
-        }
-        @include desktop {
-            font-size: $d-header;
-            line-height: $d-header-line-height;
-            @include padding($left: 150px, $bottom: 160px);
-        }
-    }
 }
 /*** Bio - About styling ***/
 .quote {
@@ -166,7 +134,7 @@
         }
     }
 }
-
+/*** Bio - Join the Conversation (comment section) ***/
 .conversation {
     @include padding($left: $mobile-p-l, $bottom: $mobile-p-b, $right: $mobile-p-r); 
     @include tablet {

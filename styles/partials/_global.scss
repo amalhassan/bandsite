@@ -17,6 +17,41 @@ a, a:active, a:visited, a:hover, a:link {
     color: $Silver;
     text-decoration: none;
 }
+// Hero Styling
+.hero {
+    background-size: cover;
+    background-position: center;
+    height: 30vh;
+    color: $White;
+    @include tablet {
+        height: 60vh;
+    }
+    @include desktop {
+        height: 80vh;
+    }
+    &__banner {
+        @include flex($j-content: flex-start, $a-items: center);
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        @include padding($top: $mobile-p-t, $left: $mobile-p-l, $right: $mobile-p-r);
+        @include tablet {
+            font-size: $t-header;
+            line-height: $t-header-line-height;
+            @include padding($left: $td-p-l);
+        }
+        @include desktop {
+            font-size: $d-header;
+            line-height: $d-header-line-height;
+            @include padding($left: 150px, $bottom: 160px);
+        }
+    }
+    &__title {
+        font-family: $avenir-demi;
+        font-size: $m-header;
+        line-height: $m-header-line-height;
+    }
+}
 // Section titles styling
 .section-title {
     font-family: $avenir-demi;

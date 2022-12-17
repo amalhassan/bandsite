@@ -1,0 +1,82 @@
+@use './partials/global' as *;
+@use './partials/header' as *;
+@use './partials/footer' as *;
+@use './partials/variables' as *;
+@use './partials/mixins' as *;
+/*** Shows - Hero styling **/
+.hero {
+    background-image: url(../assets/images/hero-shows.jpg);
+    background-position: top;
+    height: 50vh;
+    @include tablet {
+        background-position: center;
+        height: 65vh;
+    }
+    @include desktop {
+        background-position: center -170px;
+        height: 90vh;
+    }
+    &__banner {
+        // border: red solid 2px;
+        @include flex($j-content:center);
+
+    }
+    &__banner-container {
+        @include flex($direction: column);
+        // flex-direction: column;
+        border: blue solid 2px;
+        align-self: flex-end;
+        align-content: center;
+        // align-items: flex-start;
+        // justify-content: space-between;
+        row-gap: 20px;
+        height: 90%;
+        @include padding($bottom: $mobile-p-b);
+        @include desktop {
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+    }
+    &__title {
+        max-width: 75%;
+        line-height: 2.8rem;
+        @include tablet {
+            width: 80%;
+            font-size: 4.2rem;
+            line-height: 4.5rem;
+        }
+        @include desktop {
+            max-width: 45%;
+            border: solid 2px green;
+        }
+    }
+    &__sub-title {
+        font-family: $avenir-regular;
+        border: 2px red solid;
+        // border: green solid 2px;
+        font-size: 1.3rem;
+        @include tablet {
+            font-family: $avenir-demi;
+            font-size: 2rem;
+        }
+        @include desktop {
+            font-size: 1.8rem;
+            flex: 1 0 100%;
+        }
+    }
+    &__song {
+        @include tablet {
+            max-width: 60%; 
+        }
+        @include desktop {
+            max-width: 40%;
+        }
+    }
+}
+.shows {
+    &__title {
+        @include padding($left: $mobile-p-l);
+    }
+}
