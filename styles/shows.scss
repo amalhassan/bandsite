@@ -7,7 +7,7 @@
 .hero {
     background-image: url(../assets/images/hero-shows.jpg);
     background-position: top;
-    height: 50vh;
+    height: 60vh;
     @include tablet {
         background-position: center;
         height: 65vh;
@@ -76,7 +76,83 @@
     }
 }
 .shows {
+    &__title-container {
+        border: red solid 2px;
+        @include flex($direction: column);
+        @include padding($left: $mobile-p-l, $bottom: $mobile-p-b);
+        @include tablet {
+            @include padding($left: $td-p-l);
+            row-gap: 20px;
+        }
+        @include desktop {
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: space-between;
+            @include padding($left: 9.2rem);
+        }
+    }
     &__title {
-        @include padding($left: $mobile-p-l);
+        @include padding($top: $mobile-heading-p-t);
+        @include tablet {
+            @include padding($top: $td-heading-p-t);
+        }
+        @include desktop {
+            @include padding($top: 5rem, $bottom: $td-p-b);
+            align-self: flex-end;
+            line-height: 0;
+        }
+    }
+    &__labels {
+        @include flex($j-content:space-between, $a-items: center);
+        width: 70%;
+        // flex-grow: 2;
+        @include desktop {
+            width: 90%;
+            justify-content: space-around;
+        }
+    }
+    &__label-item {
+        color: $Silver;
+        font-family: $avenir-demi;
+        text-transform: uppercase;
+    }
+    &__label-item--mobile {
+        @extend .shows__label-item;
+        @include tablet {
+            display: none;
+        }
+    }
+    &__label-item--tablet-desktop {
+        display: none;
+        @extend .shows__label-item;
+        @include tablet {
+            display: block;
+            font-size: $td-body-copy;
+        }
+    }
+    &__info-container {
+        color: $BandSite-Black;
+        @include flex($direction: column);
+        @include padding($top: $mobile-p-t, $bottom: $mobile-p-b, $left: $mobile-p-l, $right: $mobile-p-r);
+        gap: 20px;
+        border-bottom: 2px solid $Mercury;
+        // border: solid blue 2px;
+    }
+    &__field-wrapper {
+        @include flex($direction: column);
+        gap: 5px;
+        @include padding();
+    }
+    &__info{
+        font-size: $m-body-copy;
+    }
+    &__info--date {
+        font-family: $avenir-demi;
+    }
+    &__btn {
+        @extend .btn;
+        font-size: $m-body-copy;
+        @include padding($top: $mobile-p-t);
+
     }
 }

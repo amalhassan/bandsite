@@ -217,20 +217,13 @@
         resize: none;
     }
     &__button{
-        @extend .conversation__label;
-        color: $White;
-        background-color: $BandSite-Black;
-        padding: 15px;
-        border-radius: 5px;
-        border-style: none;
-        font-size: 1.3rem;
-        cursor: pointer;
+        @extend .btn;
         @include tablet {
             width: 40%;
             align-self: flex-end;
         }
         @include desktop {
-            width: 30%
+            width: 30%;
         }
     }
     &__comment-container{

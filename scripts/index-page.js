@@ -1,3 +1,4 @@
+import  elementGenerator  from "./elementGenerator.js";
 //validation of user's submission
 const userInput = document.querySelectorAll("input, textarea");
  
@@ -26,19 +27,8 @@ let nameDiv;
 let nameElement;
 let dateElement;
 
-// function generates HTML elements, sets attributes such as classes, and appends children
-const elementGen = (type, attributes, ...children) => {
-    const element = document.createElement(type);
-    for (key in attributes) {
-        element.setAttribute(key, attributes[key]);
-    }
-    children.forEach(child => {
-        element.appendChild(child);
-    })
-    return element
-}
 // second argument for toLocaleDateString() method - formats date as MM/dd/YYYY
-dateFormat = {
+const dateFormat = {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -63,31 +53,31 @@ let commentArray = [
 ];
 console.log(commentArray);
 
-defaultDisplayComment = (ca) => {
+const defaultDisplayComment = (ca) => {
     ca.forEach((obj) => {
         // created nameElement and added styling. Assigned obj.name to innerHTML
-        nameElement = elementGen('h4', {class: 'conversation__name'});
+        nameElement = elementGenerator('h4', {class: 'conversation__name'});
         nameElement.innerHTML = obj.name;
 
         // created dateElement and added styling. Assigned obj.date to innerHTML
-        dateElement = elementGen('p', {class: 'conversation__date'});
+        dateElement = elementGenerator('p', {class: 'conversation__date'});
         dateElement.innerHTML = obj.date;
 
         // created nameDiv, added styling and appended childrem: nameElement, dateElement
-        nameDiv = elementGen('div', {class: 'conversation__title-section'}, nameElement, dateElement);
+        nameDiv = elementGenerator('div', {class: 'conversation__title-section'}, nameElement, dateElement);
         
         // created commentElement and added styling. Assigned obj.comment to innerHTML
-        commentElement = elementGen('p', {class: 'conversation__text'});
+        commentElement = elementGenerator('p', {class: 'conversation__text'});
         commentElement.innerHTML = obj.comment;
 
         // created commentDiv, added styling and appended children: nameDiv, commentDiv
-        commentDiv = elementGen('div', {class: 'conversation__comment-div'}, nameDiv, commentElement);
+        commentDiv = elementGenerator('div', {class: 'conversation__comment-div'}, nameDiv, commentElement);
         
         // created avatarImg and added styling
-        avatarImg = elementGen('img', {class: 'conversation__avatar', src: "../assets/images/Mohan-muruge.jpg"}); 
+        avatarImg = elementGenerator('img', {class: 'conversation__avatar', src: "../assets/images/Mohan-muruge.jpg"}); 
 
         // created containerDiv, added styling and appended children: avatarImg, commentDiv
-        containerDiv = elementGen('div', {class: 'conversation__comment-wrapper'}, avatarImg, commentDiv);
+        containerDiv = elementGenerator('div', {class: 'conversation__comment-wrapper'}, avatarImg, commentDiv);
         
         //appended containerDiv element into commentSection element
         commentSection.append(containerDiv);
@@ -126,30 +116,30 @@ let createComment = (e) => {
         console.log(commentArray);
     }
     addToCommentArray(commentName, commentDate, commentText);
-    displayComment = (ca) => {
+    const displayComment = (ca) => {
         // created nameElement and added styling. Assigned obj.name to innerHTML
-        nameElement = elementGen('h4', {class: 'conversation__name'});
+        nameElement = elementGenerator('h4', {class: 'conversation__name'});
         nameElement.innerHTML = ca[0].name;
 
         // created dateElement and added styling. Assigned obj.date to innerHTML
-        dateElement = elementGen('p', {class: 'conversation__date'});
+        dateElement = elementGenerator('p', {class: 'conversation__date'});
         dateElement.innerHTML = ca[0].date;
 
         // created nameDiv, added styling and appended childrem: nameElement, dateElement
-        nameDiv = elementGen('div', {class: 'conversation__title-section'}, nameElement, dateElement);
+        nameDiv = elementGenerator('div', {class: 'conversation__title-section'}, nameElement, dateElement);
 
         // created commentElement and added styling. Assigned obj.comment to innerHTML
-        commentElement = elementGen('p', {class: 'conversation__text'});
+        commentElement = elementGenerator('p', {class: 'conversation__text'});
         commentElement.innerHTML = ca[0].comment;
 
         // created commentDiv, added styling and appended children: nameDiv, commentDiv
-        commentDiv = elementGen('div', {class: 'conversation__comment-div'}, nameDiv, commentElement);
+        commentDiv = elementGenerator('div', {class: 'conversation__comment-div'}, nameDiv, commentElement);
 
         // created avatarImg and added styling
-        avatarImg = elementGen('img', {class: 'conversation__avatar', src: "../assets/images/Mohan-muruge.jpg"}); 
+        avatarImg = elementGenerator('img', {class: 'conversation__avatar', src: "../assets/images/Mohan-muruge.jpg"}); 
 
         // created containerDiv, added styling and appended children: avatarImg, commentDiv
-        containerDiv = elementGen('div', {class: 'conversation__comment-wrapper'}, avatarImg, commentDiv);
+        containerDiv = elementGenerator('div', {class: 'conversation__comment-wrapper'}, avatarImg, commentDiv);
         //comment div prepended into commentSection
         commentSection.prepend(containerDiv);
     }
