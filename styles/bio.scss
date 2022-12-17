@@ -169,21 +169,38 @@
 
 .conversation {
     @include padding($left: $mobile-p-l, $bottom: $mobile-p-b, $right: $mobile-p-r); 
+    @include tablet {
+        @include padding($left: $td-p-l, $bottom: $td-p-b, $right: $td-p-r);
+    }
+    @include desktop {
+        @include padding($right: $d-p-r, $left:$d-p-l);
+    }
     // border: solid 2px red;
     &__title {
 
+    }
+    &__wrapper {
+        // border: solid 2px green;
+        @include tablet {
+            max-width: 95%;
+            margin: 0 auto;
+            @include padding($top: $td-p-t, $left: $td-p-l, $bottom: $td-p-b, $right: $td-p-r);
+        }
+        @include desktop {
+            max-width: 60%;
+        }
     }
     &__form-container{
         @include flex();
         // border: solid 2px green;
         gap: 1.25rem;
         border-bottom: 2px solid $Mercury;
-        @include padding($bottom: $mobile-p-b);
+        @include padding($bottom: 1.2rem);
     }
     &__avatar{
         border-radius: 50%;
         object-fit: cover;
-        object-position: 5%;
+        object-position: 20%;
         width: 50px;
         height: 50px;
         background-color: $Mercury;
@@ -217,9 +234,15 @@
             opacity: 1;
             font-size: 1.2rem;
         }
+        &:active {
+            outline-color: $BandSite-Black;
+        }
         @include tablet{
             padding: 16px;
         }
+    }
+    &__input-error {
+        border-color: #D22D2D;
     }
     &__textbox--name{}
     &__textbox--comment{
@@ -234,17 +257,29 @@
         border-style: none;
         font-size: 1.3rem;
         cursor: pointer;
+        @include tablet {
+            width: 40%;
+            align-self: flex-end;
+        }
+        @include desktop {
+            width: 30%
+        }
     }
     &__comment-container{
+        // border: 2px solid blue;
         // @include flex();
-        // @include padding($top: $mobile-p-t);
+        @include padding($bottom: $mobile-p-b);
         // border-top: $Silver 2px solid;
     }
     &__comment-wrapper {
         // border: 2px solid blue;
+        font-family: $avenir-regular;
         @include flex($j-content: space-between);
         @include padding($bottom: $mobile-p-b);
-        border-bottom: 1px solid $Mercury;
+        border-bottom: 2px solid $Mercury;
+        @include tablet {
+            @include padding($top: $td-p-t, $bottom: $td-p-b);
+        }
     }
     &__title-section{
         @include flex($j-content:space-between);
@@ -253,6 +288,7 @@
         
     }
     &__name {
+        font-family: $avenir-bold;
         color: $BandSite-Black;
         font-size: 1.1rem;
     }
@@ -263,7 +299,7 @@
     &__comment-div {
         // border: solid 2px green;
         word-break: break-word;
-        max-width: 85%;
+        width: 85%;
         align-self: flex-end;
     }
     &__text {

@@ -1,24 +1,63 @@
+//validation of user's submission
+const userInput = document.querySelectorAll("input, textarea");
+ 
+userInput.forEach(input => {
+    input.addEventListener("invalid", (event) => {
+            input.classList.add("conversation__input-error");
+        },
+        false
+    );
+    input.addEventListener("blur", (event) => {
+        if (input.checkValidity()) {
+            input.classList.remove("conversation__input-error");
+        } 
+      });
+});
+
+// variables 
 const form = document.getElementById('form');
 console.log(form);
-// let nameInput = document.getElementById('name').value;
-// console.log(nameInput);
-// let commentInput = document.getElementById('comment').value;
 let commentSection = document.getElementById('commentBox');
+let containerDiv;
+let avatarImg;
+let commentDiv;
+let commentElement;
+let nameDiv;
+let nameElement;
+let dateElement;
 
+// function generates HTML elements, sets attributes such as classes, and appends children
+const elementGen = (type, attributes, ...children) => {
+    const element = document.createElement(type);
+    for (key in attributes) {
+        element.setAttribute(key, attributes[key]);
+    }
+    children.forEach(child => {
+        element.appendChild(child);
+    })
+    return element
+}
+// second argument for toLocaleDateString() method - formats date as MM/dd/YYYY
+dateFormat = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+}
+// array to store comments
 let commentArray = [
     {
         name: "Connor Walton", 
-        date: new Date('02/17/2021').toLocaleDateString('en-US'), 
+        date: new Date('02/17/2021').toLocaleDateString('en-US', dateFormat), 
         comment: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains."
     }, 
     {
         name: "Emilie Beach", 
-        date: new Date('01/09/2021').toLocaleDateString('en-US'), 
+        date: new Date('01/09/2021').toLocaleDateString('en-US', dateFormat), 
         comment: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day."
     }, 
     {
         name: "Miles Acosta", 
-        date: new Date('12/20/2020').toLocaleDateString('en-US'), 
+        date: new Date('12/20/2020').toLocaleDateString('en-US', dateFormat), 
         comment: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough."
     }
 ];
@@ -26,50 +65,31 @@ console.log(commentArray);
 
 defaultDisplayComment = (ca) => {
     ca.forEach((obj) => {
-        let containerDiv = document.createElement('div');
-        let avatarImg = document.createElement('img');
-
-        let nameDiv = document.createElement('div');
-        let nameElement = document.createElement('h4');
-        let dateElement = document.createElement('p');
-        
-        let commentDiv = document.createElement('div');
-        let commentElement = document.createElement('p');
-
-        // styling for container div
-        containerDiv.classList.add("conversation__comment-wrapper");
-
-        // avatarImg append to comment section
-        containerDiv.append(avatarImg);
-        avatarImg.classList.add("conversation__avatar");
-
-        // name element
+        // created nameElement and added styling. Assigned obj.name to innerHTML
+        nameElement = elementGen('h4', {class: 'conversation__name'});
         nameElement.innerHTML = obj.name;
-        nameElement.classList.add("conversation__name");
-        console.log(nameElement);
-        nameDiv.appendChild(nameElement);
 
-        // date element
+        // created dateElement and added styling. Assigned obj.date to innerHTML
+        dateElement = elementGen('p', {class: 'conversation__date'});
         dateElement.innerHTML = obj.date;
-        dateElement.classList.add("conversation__date");
-        nameDiv.appendChild(dateElement);
 
-        //styling for nameDiv
-        nameDiv.classList.add("conversation__title-section");
-
-        // name div appended into commment div 
-        commentDiv.appendChild(nameDiv);
-        commentDiv.classList.add("conversation__comment-div");
-
-        //comment element appended into comment div
+        // created nameDiv, added styling and appended childrem: nameElement, dateElement
+        nameDiv = elementGen('div', {class: 'conversation__title-section'}, nameElement, dateElement);
+        
+        // created commentElement and added styling. Assigned obj.comment to innerHTML
+        commentElement = elementGen('p', {class: 'conversation__text'});
         commentElement.innerHTML = obj.comment;
-        commentDiv.appendChild(commentElement);
-        commentElement.classList.add("conversation__text");
 
-        //comment div append into container div
-        containerDiv.append(commentDiv);
+        // created commentDiv, added styling and appended children: nameDiv, commentDiv
+        commentDiv = elementGen('div', {class: 'conversation__comment-div'}, nameDiv, commentElement);
+        
+        // created avatarImg and added styling
+        avatarImg = elementGen('img', {class: 'conversation__avatar', src: "../assets/images/Mohan-muruge.jpg"}); 
 
-        //comment div prepended into commentSection
+        // created containerDiv, added styling and appended children: avatarImg, commentDiv
+        containerDiv = elementGen('div', {class: 'conversation__comment-wrapper'}, avatarImg, commentDiv);
+        
+        //appended containerDiv element into commentSection element
         commentSection.append(containerDiv);
     })  
 }
@@ -77,6 +97,9 @@ defaultDisplayComment(commentArray);
 
 let createComment = (e) => {
     e.preventDefault();
+    userInput.forEach(input => {
+        input.classList.remove("conversation__input-error");
+    });
     let commentName = form[0].value;
     console.log(commentName);
     let commentText = form[1].value
@@ -98,54 +121,35 @@ let createComment = (e) => {
             (a, b) => b.date - a.date,
         );
         commentArray.forEach((item) => {
-            item.date = new Date(item.date).toLocaleDateString('en-US');
+            item.date = new Date(item.date).toLocaleDateString('en-US', dateFormat);
         });
         console.log(commentArray);
     }
     addToCommentArray(commentName, commentDate, commentText);
-    let displayComment = (ca) => {
-        let containerDiv = document.createElement('div');
-        let avatarImg = document.createElement('img');
-
-        let nameDiv = document.createElement('div');
-        let nameElement = document.createElement('h4');
-        let dateElement = document.createElement('p');
-        
-        let commentDiv = document.createElement('div');
-        let commentElement = document.createElement('p');
-
-        // styling for container div
-        containerDiv.classList.add("conversation__comment-wrapper");
-        // avatarImg append to container div
-        containerDiv.append(avatarImg);
-        avatarImg.classList.add("conversation__avatar");
-
-        // name element
+    displayComment = (ca) => {
+        // created nameElement and added styling. Assigned obj.name to innerHTML
+        nameElement = elementGen('h4', {class: 'conversation__name'});
         nameElement.innerHTML = ca[0].name;
-        nameElement.classList.add("conversation__name");
-        console.log(nameElement);
-        nameDiv.append(nameElement);
 
-        // date element
+        // created dateElement and added styling. Assigned obj.date to innerHTML
+        dateElement = elementGen('p', {class: 'conversation__date'});
         dateElement.innerHTML = ca[0].date;
-        dateElement.classList.add("conversation__date");
-        nameDiv.append(dateElement);
 
-        //styling for nameDiv
-        nameDiv.classList.add("conversation__title-section");
+        // created nameDiv, added styling and appended childrem: nameElement, dateElement
+        nameDiv = elementGen('div', {class: 'conversation__title-section'}, nameElement, dateElement);
 
-        // name div appended into commment div 
-        commentDiv.appendChild(nameDiv);
-        commentDiv.classList.add("conversation__comment-div");
-
-        //comment element appended into comment div
+        // created commentElement and added styling. Assigned obj.comment to innerHTML
+        commentElement = elementGen('p', {class: 'conversation__text'});
         commentElement.innerHTML = ca[0].comment;
-        commentDiv.append(commentElement);
-        commentElement.classList.add("conversation__text");
 
-        //comment div append into container dov
-        containerDiv.append(commentDiv);
+        // created commentDiv, added styling and appended children: nameDiv, commentDiv
+        commentDiv = elementGen('div', {class: 'conversation__comment-div'}, nameDiv, commentElement);
 
+        // created avatarImg and added styling
+        avatarImg = elementGen('img', {class: 'conversation__avatar', src: "../assets/images/Mohan-muruge.jpg"}); 
+
+        // created containerDiv, added styling and appended children: avatarImg, commentDiv
+        containerDiv = elementGen('div', {class: 'conversation__comment-wrapper'}, avatarImg, commentDiv);
         //comment div prepended into commentSection
         commentSection.prepend(containerDiv);
     }
