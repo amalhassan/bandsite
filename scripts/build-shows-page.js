@@ -1,14 +1,19 @@
 import  elementGenerator  from "./elementGenerator.js";
 const showsTitleSection = document.getElementById('title-container'); 
-const showsSection = document.getElementById('shows');
+const showsSection = document.getElementById('info-section');
+const titleDateLabel = elementGenerator('h4', {class:'shows__label-item shows__label-item--tablet-desktop'}, 'Date');
+const titleVenueLabel = elementGenerator('h4', {class:'shows__label-item shows__label-item--tablet-desktop'}, 'Venue');
+const titleLocationLabel = elementGenerator('h4', {class:'shows__label-item shows__label-item--tablet-desktop'}, 'Location');
+let showLabelContainer = elementGenerator('ul', {class: 'shows__labels shows__label-item--tablet-desktop'}, titleDateLabel, titleVenueLabel, titleLocationLabel);
+let showsContainer;
 
 window.addEventListener("load", () => {
-    const titleDateLabel = elementGenerator('h4', {class:'shows__label-item shows__label-item--tablet-desktop'}, 'Date');
-    const titleVenueLabel = elementGenerator('h4', {class:'shows__label-item shows__label-item--tablet-desktop'}, 'Venue');
-    const titleLocationLabel = elementGenerator('h4', {class:'shows__label-item shows__label-item--tablet-desktop'}, 'Location');
-    let showLabelContainer = elementGenerator('ul', {class: 'shows__labels'}, titleDateLabel, titleVenueLabel, titleLocationLabel);
+    // const titleDateLabel = elementGenerator('h4', {class:'shows__label-item shows__label-item--tablet-desktop'}, 'Date');
+    // const titleVenueLabel = elementGenerator('h4', {class:'shows__label-item shows__label-item--tablet-desktop'}, 'Venue');
+    // const titleLocationLabel = elementGenerator('h4', {class:'shows__label-item shows__label-item--tablet-desktop'}, 'Location');
+    // let showLabelContainer = elementGenerator('ul', {class: 'shows__labels'}, titleDateLabel, titleVenueLabel, titleLocationLabel);
     // console.log(showLabelContainer);
-    showsTitleSection.append(showLabelContainer);
+    // showsTitleSection.append(showLabelContainer);
 })
 
 let shows = [
@@ -59,9 +64,20 @@ const displayShows = (showData) => {
         let showLocation = elementGenerator('p',  {class: 'shows__info'}, show.location);
         let locationWrapper = elementGenerator('div', {class: 'shows__field-wrapper'}, locationLabel, showLocation);
         let ticketBtn = elementGenerator('button', {class: 'shows__btn'}, 'Buy Tickets');
-        let showsContainer = elementGenerator('div', {class: 'shows__info-container'}, dateWrapper, venueWrapper, locationWrapper, ticketBtn);
+        showsContainer = elementGenerator('div', {class: 'shows__info-container'}, dateWrapper, venueWrapper, locationWrapper, ticketBtn);
         showsSection.appendChild(showsContainer);
     })
+    showsSection.prepend(showLabelContainer);
 };
 
 displayShows(shows);
+console.log(showsContainer);
+const showRows = document.getElementsByClassName('shows__info-container');
+console.log(showRows);
+Array.from(showRows).forEach((element, index) => {
+    let current = document.querySelectorAll('selected');
+    console.log(current);
+    element.addEventListener('click', () => {
+        element.classList.toggle("selected");
+    });
+});

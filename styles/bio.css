@@ -38,6 +38,10 @@ a, a:active, a:visited, a:hover, a:link {
   text-decoration: none;
 }
 
+.selected {
+  background-color: green;
+}
+
 .btn, .conversation__button {
   font-family: "AvenirNextDemi", sans-serif;
   color: #FFFFFF;

@@ -14,17 +14,16 @@
     }
     @include desktop {
         background-position: center -170px;
-        height: 90vh;
+        height: 85vh;
     }
     &__banner {
         // border: red solid 2px;
         @include flex($j-content:center);
-
     }
     &__banner-container {
         @include flex($direction: column);
         // flex-direction: column;
-        border: blue solid 2px;
+        // border: blue solid 2px;
         align-self: flex-end;
         align-content: center;
         // align-items: flex-start;
@@ -49,12 +48,12 @@
         }
         @include desktop {
             max-width: 45%;
-            border: solid 2px green;
+            // border: solid 2px green;
         }
     }
     &__sub-title {
         font-family: $avenir-regular;
-        border: 2px red solid;
+        // border: 2px red solid;
         // border: green solid 2px;
         font-size: 1.3rem;
         @include tablet {
@@ -77,7 +76,7 @@
 }
 .shows {
     &__title-container {
-        border: red solid 2px;
+        // border: red solid 2px;
         @include flex($direction: column);
         @include padding($left: $mobile-p-l, $bottom: $mobile-p-b);
         @include tablet {
@@ -88,7 +87,7 @@
             flex-direction: row;
             align-items: flex-end;
             justify-content: space-between;
-            @include padding($left: 9.2rem);
+            @include padding($left: 9.2rem, $bottom:0);
         }
     }
     &__title {
@@ -97,18 +96,24 @@
             @include padding($top: $td-heading-p-t);
         }
         @include desktop {
-            @include padding($top: 5rem, $bottom: $td-p-b);
+            @include padding($top: 5rem);
             align-self: flex-end;
             line-height: 0;
         }
     }
     &__labels {
-        @include flex($j-content:space-between, $a-items: center);
-        width: 70%;
-        // flex-grow: 2;
+        @include flex();
+        gap: 20px;
+        @include tablet {
+            // border: purple 2px solid;
+            width: 67%;
+            justify-content: space-between;
+            align-items: flex-start;
+            @include padding($left: $td-p-l);
+        }
         @include desktop {
-            width: 90%;
-            justify-content: space-around;
+            width: 47%;
+            // border: 2px solid green;
         }
     }
     &__label-item {
@@ -126,8 +131,16 @@
         display: none;
         @extend .shows__label-item;
         @include tablet {
-            display: block;
+            display: flex;
             font-size: $td-body-copy;
+        }
+    }
+    &__info-section {
+        @include desktop {
+            @include flex($direction: column, $a-content: flex-end);
+            flex-wrap: wrap;
+            @include padding($right: $td-p-r, $bottom: $td-p-b);
+            // border: 2px solid orange;     
         }
     }
     &__info-container {
@@ -136,15 +149,30 @@
         @include padding($top: $mobile-p-t, $bottom: $mobile-p-b, $left: $mobile-p-l, $right: $mobile-p-r);
         gap: 20px;
         border-bottom: 2px solid $Mercury;
+        &:hover {
+            background-color: $Alabaster;
+            cursor: pointer;
+        }
         // border: solid blue 2px;
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            @include padding($left: $td-p-l);
+        }
+        @include desktop {
+            width: 70%;
+        }
     }
     &__field-wrapper {
         @include flex($direction: column);
         gap: 5px;
-        @include padding();
+        flex-basis: 25%;
     }
     &__info{
         font-size: $m-body-copy;
+        text-align: left;
+        // border: solid 2px green;
     }
     &__info--date {
         font-family: $avenir-demi;
@@ -153,6 +181,5 @@
         @extend .btn;
         font-size: $m-body-copy;
         @include padding($top: $mobile-p-t);
-
     }
 }

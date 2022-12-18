@@ -17,6 +17,9 @@ a, a:active, a:visited, a:hover, a:link {
     color: $Silver;
     text-decoration: none;
 }
+.selected {
+    background-color: green;
+}
 .btn {
     font-family: $avenir-demi;
     color: $White;
