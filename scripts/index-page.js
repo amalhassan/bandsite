@@ -67,7 +67,7 @@ let commentArray = [
     }
 ];
 // function to create elements and display comments
-const displayComment = (ca) => {
+const displayComment = (ca, index) => {
     // created nameElement and added styling. Assigned obj.name to innerHTML
     nameElement = elementGenerator('h4', {class: 'conversation__name'});
     nameElement.innerHTML = ca.name;
@@ -86,10 +86,15 @@ const displayComment = (ca) => {
     // created containerDiv, added styling and appended children: avatarImg, commentDiv
     containerDiv = elementGenerator('div', {class: 'conversation__comment-wrapper'}, avatarImg, commentDiv);
     //comment div prepended into commentSection
-    commentSection.prepend(containerDiv);
+    if (index == 0) {
+        commentSection.prepend(containerDiv);
+    } else {
+        commentSection.append(containerDiv);
+    }
 }
-commentArray.forEach((obj) => {
-    displayComment(obj);
+console.log(commentArray);
+commentArray.forEach((obj, index) => {
+    displayComment(obj, index);
 })
 // function to retrieve submission from user, store new comment into commentArray, and display new comment
 const createAndDisplayNewComment = (e) => {
@@ -116,6 +121,6 @@ const createAndDisplayNewComment = (e) => {
         );
     }
     addToCommentArray(commentName, commentDate, commentText);
-    displayComment(commentArray[0]);
+    displayComment(commentArray[0], 0);
 }
 form.addEventListener('submit', createAndDisplayNewComment);
