@@ -14,16 +14,13 @@ li {
     list-style: none;
 }
 a, a:active, a:visited, a:hover, a:link {
-    color: $Silver;
+    color: $silver;
     text-decoration: none;
-}
-.selected {
-    background-color: green;
 }
 .btn {
     font-family: $avenir-demi;
-    color: $White;
-    background-color: $BandSite-Black;
+    color: $white;
+    background-color: $bandsite-black;
     padding: 15px;
     border-radius: 5px;
     border-style: none;
@@ -38,7 +35,7 @@ a, a:active, a:visited, a:hover, a:link {
     background-size: cover;
     background-position: center;
     height: 30vh;
-    color: $White;
+    color: $white;
     @include tablet {
         height: 60vh;
     }
@@ -52,13 +49,13 @@ a, a:active, a:visited, a:hover, a:link {
         background-color: rgba(0, 0, 0, 0.4);
         @include padding($top: $mobile-p-t, $left: $mobile-p-l, $right: $mobile-p-r);
         @include tablet {
-            font-size: $t-header;
-            line-height: $t-header-line-height;
+            font-size: 4rem;
+            line-height: 4.1rem;
             @include padding($left: $td-p-l);
         }
         @include desktop {
-            font-size: $d-header;
-            line-height: $d-header-line-height;
+            font-size: 4.5rem;
+            line-height: 4.7rem;
             @include padding($left: 150px, $bottom: 160px);
         }
     }
@@ -74,7 +71,7 @@ a, a:active, a:visited, a:hover, a:link {
     font-size: $m-header;
     line-height: $m-header-line-height;
     &--main {
-        color: $BandSite-Black;
+        color: $bandsite-black;
         @include padding($top: $mobile-heading-p-t, $bottom: $mobile-p-b);
         @include tablet {
             font-size: $td-section-header;
@@ -85,5 +82,5 @@ a, a:active, a:visited, a:hover, a:link {
 
 .field {
     border-radius: 4px;
-    border-color: $Silver;
+    border-color: $silver;
 }

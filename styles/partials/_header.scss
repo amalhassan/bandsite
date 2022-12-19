@@ -20,12 +20,12 @@
 }
 .header {
     @include flex($direction: column, $j-content: center, $a-items: center);
-    background-color: $BandSite-Black;
+    background-color: $bandsite-black;
     @include tablet {
         @include flex();
     }
     @include desktop {
-        @include padding($left: $d-p-l);
+        @include padding($left: $desktop-p-l);
     }
     &__logo-box {
         @include padding($top: $td-p-t, $right: $td-p-r, $bottom: $td-p-b, $left: $td-p-l);
@@ -52,7 +52,7 @@
         text-align: center;
         @include padding($bottom: $mobile-p-b);
         &:hover {
-            border-bottom: 5px solid $White;
+            border-bottom: 5px solid $white;
         }
         @include tablet {
             @include padding($bottom: $td-p-b); 
@@ -60,16 +60,16 @@
     }
     &__label--active-state, &__label--active-state:active, &__label--active-state:visited, &__label--active-state:link {
         font-family: $avenir-regular;
-        color: $White;
+        color: $white;
         font-family: $avenir-demi;
     }
     &__label--hover-state {
         @extend .header__label--active-state;
         &:hover {
-            color: $Mercury;
+            color: $mercury;
         }
     }
 }
 .active {
-    border-bottom: 5px solid $White;
+    border-bottom: 5px solid $white;
 }

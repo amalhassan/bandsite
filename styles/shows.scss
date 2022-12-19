@@ -3,7 +3,7 @@
 @use './partials/footer' as *;
 @use './partials/variables' as *;
 @use './partials/mixins' as *;
-/*** Shows - Hero styling **/
+/*** Shows - Hero styling ***/
 .hero {
     background-image: url(../assets/images/hero-shows.jpg);
     background-position: top;
@@ -17,17 +17,12 @@
         height: 85vh;
     }
     &__banner {
-        // border: red solid 2px;
         @include flex($j-content:center);
     }
     &__banner-container {
         @include flex($direction: column);
-        // flex-direction: column;
-        // border: blue solid 2px;
         align-self: flex-end;
         align-content: center;
-        // align-items: flex-start;
-        // justify-content: space-between;
         row-gap: 20px;
         height: 90%;
         @include padding($bottom: $mobile-p-b);
@@ -48,13 +43,10 @@
         }
         @include desktop {
             max-width: 45%;
-            // border: solid 2px green;
         }
     }
     &__sub-title {
         font-family: $avenir-regular;
-        // border: 2px red solid;
-        // border: green solid 2px;
         font-size: 1.3rem;
         @include tablet {
             font-family: $avenir-demi;
@@ -74,9 +66,9 @@
         }
     }
 }
+/*** Shows - Information styling **/
 .shows {
     &__title-container {
-        // border: red solid 2px;
         @include flex($direction: column);
         @include padding($left: $mobile-p-l, $bottom: $mobile-p-b);
         @include tablet {
@@ -105,7 +97,6 @@
         @include flex();
         gap: 20px;
         @include tablet {
-            // border: purple 2px solid;
             width: 67%;
             justify-content: space-between;
             align-items: flex-start;
@@ -113,11 +104,10 @@
         }
         @include desktop {
             width: 47%;
-            // border: 2px solid green;
         }
     }
     &__label-item {
-        color: $Silver;
+        color: $silver;
         font-family: $avenir-demi;
         text-transform: uppercase;
     }
@@ -139,21 +129,19 @@
         @include desktop {
             @include flex($direction: column, $a-content: flex-end);
             flex-wrap: wrap;
-            @include padding($right: $td-p-r, $bottom: $td-p-b);
-            // border: 2px solid orange;     
+            @include padding($right: $td-p-r, $bottom: $td-p-b);     
         }
     }
     &__info-container {
-        color: $BandSite-Black;
+        color: $bandsite-black;
         @include flex($direction: column);
         @include padding($top: $mobile-p-t, $bottom: $mobile-p-b, $left: $mobile-p-l, $right: $mobile-p-r);
         gap: 20px;
-        border-bottom: 2px solid $Mercury;
+        border-bottom: 2px solid $mercury;
         &:hover {
-            background-color: $Alabaster;
+            background-color: $alabaster;
             cursor: pointer;
         }
-        // border: solid blue 2px;
         @include tablet {
             flex-direction: row;
             justify-content: space-between;
@@ -172,7 +160,6 @@
     &__info{
         font-size: $m-body-copy;
         text-align: left;
-        // border: solid 2px green;
     }
     &__info--date {
         font-family: $avenir-demi;
@@ -181,5 +168,11 @@
         @extend .btn;
         font-size: $m-body-copy;
         @include padding($top: $mobile-p-t);
+    }
+}
+.selected {
+    background-color: $silver;
+    &:hover {
+        background-color: $silver;
     }
 }

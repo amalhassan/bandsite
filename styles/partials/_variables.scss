@@ -1,11 +1,11 @@
 // Primary colors
-$BandSite-Black: #323232;
-$Silver: #AFAFAF;
-$White: #FFFFFF;
+$bandsite-black: #323232;
+$silver: #AFAFAF;
+$white: #FFFFFF;
 // Secondary colors
-$BandSite-DarkBlack: #000000;
-$Mercury: #E1E1E1;
-$Alabaster: #FAFAFA;
+$bandsite-dark-black: #000000;
+$mercury: #E1E1E1;
+$alabaster: #FAFAFA;
 // Typography
 $light: 300;
 $normal: 400;
@@ -41,31 +41,15 @@ $desktop: 1280px;
 // Mobile font sizes and line height
 $m-header: 2.3rem;
 $m-header-line-height: 2.5rem;
-$m-sub-header: 1.4rem;
-$m-subheader-line-height: 22px;
 $m-body-copy: 1.125rem;
 $m-body-line-height: 1.5rem;
-$m-footer-copy: 1.1rem;
-$m-footer-line-height: 1.5rem;
-$m-label-buttons: 10px;
-$m-label-button-line-height: 20px;
-// Tablet and desktop font size and line height
-$t-header: 4rem;
-$t-header-line-height: 3.25rem;
-$d-header: 4.5rem;
-$d-header-line-height: 3.75rem;
+// Tablet and desktop (td) font size and line height
 $td-section-header: 2.625rem;
 $td-sh-line-height: 2.8rem;
 $td-sub-header: 1.875rem;
-$td-subheader-line-height: 2.5rem;
+$td-subheader-line-height: 2rem;
 $td-body-copy: 1.2rem;
 $td-body-line-height: 1.5rem;
-$t-footer-copy: 1.13rem;
-$t-footer-line-height: 1.5rem;
-$d-footer-copy: 1.5rem;
-$d-footer-line-height: 1.75rem;
-$td-label-buttons: 12px;
-$td-label-button-line-height: 20px;
 //padding mobile variables
 $mobile-p-r: 1.25rem;
 $mobile-p-l: 1.25rem;
@@ -78,5 +62,5 @@ $td-p-l: 3rem;
 $td-p-t: 2.25rem;
 $td-p-b: 2.25rem;
 $td-heading-p-t: 2.25rem;
-$d-p-l: 6.25rem;
-$d-p-r: 6.25rem;
+$desktop-p-l: 6.25rem;
+$desktop-p-r: 6.25rem;

@@ -3,21 +3,20 @@
 @use './mixins' as *;
 /*** Footer styling ***/
 .footer {
-    background-color: $BandSite-Black;
-    color: $White;
-    font-size: $m-footer-copy;
-    line-height: $m-footer-line-height;
+    background-color: $bandsite-black;
+    color: $white;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
     font-weight: $normal;
     position: relative;
     @include padding($top: $mobile-p-t, $right: $mobile-p-r, $bottom: $mobile-p-b, $left: $mobile-p-l);
-    @include tablet {
-        font-size: $t-footer-copy;
-        line-height: $t-footer-line-height;
-    }  
+    @include desktop {
+        font-size: 1.13rem;
+    } 
     &__container {
         @include desktop {
-            max-width: 65%;
-            @include padding($left: $d-p-l);
+            max-width: 75%;
+            @include padding($left: $desktop-p-l);
         }
     }
     &__social-media {
@@ -25,9 +24,9 @@
             @include flex($a-items: baseline);
         } 
         @include desktop {
-            justify-content: space-around;
+            justify-content: space-between;
             column-gap: 10px;
-            max-width: 65%;
+            max-width: 53%;
         }
     }
     &__title {
@@ -47,8 +46,8 @@
         }
         @include desktop {
             justify-content: space-between;
-            width: 40%;
-            column-gap: 10px;  
+            width: 30%;
+            column-gap: 5px; 
         }
     }
     &__icon-img {
@@ -63,7 +62,7 @@
         @include tablet {
             flex-direction: row;
             justify-content: space-between;
-            column-gap: 5px;
+            column-gap: 7px;
         }
         @include desktop {
             justify-content: space-around;
@@ -84,7 +83,7 @@
         font-style: normal;
     }
     &__email, &__email:link  {
-        color: $White;
+        color: $white;
     }
     &__logo-box {
         @include margin($top: 50px);

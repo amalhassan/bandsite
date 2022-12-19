@@ -37,10 +37,6 @@ a, a:active, a:visited, a:hover, a:link {
   text-decoration: none;
 }
 
-.selected {
-  background-color: green;
-}
-
 .btn, .shows__btn {
   font-family: "AvenirNextDemi", sans-serif;
   color: #FFFFFF;
@@ -86,14 +82,14 @@ a, a:active, a:visited, a:hover, a:link {
 @media (min-width: 768px) {
   .hero__banner {
     font-size: 4rem;
-    line-height: 3.25rem;
+    line-height: 4.1rem;
     padding-left: 3rem;
   }
 }
 @media (min-width: 1280px) {
   .hero__banner {
     font-size: 4.5rem;
-    line-height: 3.75rem;
+    line-height: 4.7rem;
     padding-bottom: 160px;
     padding-left: 150px;
   }
@@ -241,15 +237,14 @@ a, a:active, a:visited, a:hover, a:link {
   padding-bottom: 0.8rem;
   padding-left: 1.25rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .footer {
     font-size: 1.13rem;
-    line-height: 1.5rem;
   }
 }
 @media (min-width: 1280px) {
   .footer__container {
-    max-width: 65%;
+    max-width: 75%;
     padding-left: 6.25rem;
   }
 }
@@ -262,9 +257,9 @@ a, a:active, a:visited, a:hover, a:link {
 }
 @media (min-width: 1280px) {
   .footer__social-media {
-    justify-content: space-around;
+    justify-content: space-between;
     column-gap: 10px;
-    max-width: 65%;
+    max-width: 53%;
   }
 }
 .footer__title {
@@ -292,8 +287,8 @@ a, a:active, a:visited, a:hover, a:link {
 @media (min-width: 1280px) {
   .footer__icons {
     justify-content: space-between;
-    width: 40%;
-    column-gap: 10px;
+    width: 30%;
+    column-gap: 5px;
   }
 }
 .footer__icon-img {
@@ -313,7 +308,7 @@ a, a:active, a:visited, a:hover, a:link {
   .footer__contact-container {
     flex-direction: row;
     justify-content: space-between;
-    column-gap: 5px;
+    column-gap: 7px;
   }
 }
 @media (min-width: 1280px) {
@@ -363,7 +358,7 @@ a, a:active, a:visited, a:hover, a:link {
   }
 }
 
-/*** Shows - Hero styling **/
+/*** Shows - Hero styling ***/
 .hero {
   background-image: url(../assets/images/hero-shows.jpg);
   background-position: top;
@@ -446,6 +441,7 @@ a, a:active, a:visited, a:hover, a:link {
   }
 }
 
+/*** Shows - Information styling **/
 .shows__title-container {
   display: flex;
   flex-direction: column;
@@ -573,6 +569,13 @@ a, a:active, a:visited, a:hover, a:link {
 .shows__btn {
   font-size: 1.125rem;
   padding-top: 1.25rem;
+}
+
+.selected {
+  background-color: #AFAFAF;
+}
+.selected:hover {
+  background-color: #AFAFAF;
 }
 
 /*# sourceMappingURL=shows.css.map */

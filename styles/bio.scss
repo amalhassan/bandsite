@@ -11,7 +11,7 @@
 .quote {
     font-family: $avenir-demi;
     font-size: 1.4rem;
-    color: $BandSite-Black;
+    color: $bandsite-black;
 }
 .about {
     @include flex($direction: column);
@@ -27,7 +27,7 @@
         @include padding ($bottom: $td-p-b);
     }
     @include desktop {
-        @include padding($left: $d-p-l, $right: $d-p-l);
+        @include padding($left: $desktop-p-l, $right: $desktop-p-r);
     }
     &__content {
         @include tablet {
@@ -52,7 +52,7 @@
         @include padding($bottom: $mobile-p-b);
         @include tablet {
             font-size: $td-sub-header;
-            line-height: $td-sh-line-height;
+            line-height: $td-subheader-line-height;
         }
         @include desktop {
             width: 81%;
@@ -72,9 +72,9 @@
         font-style: normal;
     }
     &__subheading {
-        font-size: $m-sub-header;
-        line-height: $m-subheader-line-height;
-        color: $BandSite-DarkBlack;
+        font-size: 1.4rem;
+        line-height: 1.5rem;
+        color: $bandsite-dark-black;
         @include padding($top: $mobile-heading-p-t, $bottom: $mobile-p-b);
         @include tablet {
             font-size: $td-sub-header;
@@ -82,7 +82,7 @@
         }
     }
     &__container {
-        color: $BandSite-Black;
+        color: $bandsite-black;
         @include flex($direction: column, $j-content: space-between);
         row-gap: 20px;
         @include tablet {
@@ -95,12 +95,12 @@
 .gallery {
     &__container {
         @include flex($direction: column);
-        background-color: $Alabaster;
+        background-color: $alabaster;
         @include tablet {
             @include padding($bottom: $td-p-b);
         }
         @include desktop {
-            @include padding($left: $d-p-l, $right: $d-p-l);
+            @include padding($left: $desktop-p-l, $right: $desktop-p-r);
         }
     }
     &__title {
@@ -141,14 +141,9 @@
         @include padding($left: $td-p-l, $bottom: $td-p-b, $right: $td-p-r);
     }
     @include desktop {
-        @include padding($right: $d-p-r, $left:$d-p-l);
-    }
-    // border: solid 2px red;
-    &__title {
-
+        @include padding($right: $desktop-p-r, $left:$desktop-p-l);
     }
     &__wrapper {
-        // border: solid 2px green;
         @include tablet {
             max-width: 95%;
             margin: 0 auto;
@@ -158,26 +153,23 @@
             max-width: 60%;
         }
     }
-    &__form-container{
+    &__form-container {
         @include flex();
-        // border: solid 2px green;
         gap: 1.25rem;
-        border-bottom: 2px solid $Mercury;
+        border-bottom: 2px solid $mercury;
         @include padding($bottom: 1.2rem);
     }
-    &__avatar{
+    &__avatar {
         border-radius: 50%;
         object-fit: cover;
         object-position: 20%;
         width: 50px;
         height: 50px;
-        background-color: $Mercury;
+        background-color: $mercury;
         @include margin($top: 20px);
-        
     }
-    &__form{
+    &__form {
         @include flex($direction: column);
-        // border: 2px solid yellow;
         flex-grow: 2;
         row-gap: 20px;
     }
@@ -185,38 +177,37 @@
         @include flex($direction: column);
         row-gap: 5px;
     }
-    &__label{
+    &__label {
         font-family: $avenir-demi;
-        color: $Silver;
+        color: $silver;
         text-transform: uppercase;
         font-size: 0.8rem;
         letter-spacing: 1px;
     }
     &__textbox {
         padding: 12px;
-        background-color: $Alabaster;
-        border: 1px solid $Mercury;
-        &::placeholder{
+        background-color: $alabaster;
+        border: 1px solid $mercury;
+        &::placeholder {
             font-family: $avenir-regular;
-            color: $BandSite-Black;
+            color: $bandsite-black;
             opacity: 1;
             font-size: 1.2rem;
         }
         &:active {
-            outline-color: $BandSite-Black;
+            outline-color: $bandsite-black;
         }
-        @include tablet{
+        @include tablet {
             padding: 16px;
         }
     }
     &__input-error {
         border-color: #D22D2D;
     }
-    &__textbox--name{}
-    &__textbox--comment{
+    &__textbox--comment {
         resize: none;
     }
-    &__button{
+    &__button {
         @extend .btn;
         @include tablet {
             width: 40%;
@@ -226,51 +217,42 @@
             width: 30%;
         }
     }
-    &__comment-container{
-        // border: 2px solid blue;
-        // @include flex();
+    &__comment-container {
         @include padding($bottom: $mobile-p-b);
-        // border-top: $Silver 2px solid;
     }
     &__comment-wrapper {
-        // border: 2px solid blue;
         font-family: $avenir-regular;
         @include flex($j-content: space-between);
         @include padding($bottom: $mobile-p-b);
-        border-bottom: 2px solid $Mercury;
+        border-bottom: 2px solid $mercury;
         @include tablet {
             @include padding($top: $td-p-t, $bottom: $td-p-b);
         }
     }
-    &__title-section{
+    &__title-section {
         @include flex($j-content:space-between);
-        @include padding($top: $mobile-p-t, $bottom: $mobile-p-b);
-        // border: solid 2px red;
-        
+        @include padding($top: $mobile-p-t, $bottom: $mobile-p-b);   
     }
     &__name {
         font-family: $avenir-bold;
-        color: $BandSite-Black;
+        color: $bandsite-black;
         font-size: 1.1rem;
     }
     &__date {
-        color: $Silver;
+        color: $silver;
         font-size: 1.2rem;
     }
     &__comment-div {
-        // border: solid 2px green;
         word-break: break-word;
         width: 85%;
         align-self: flex-end;
     }
     &__text {
-        // background-color: yellow;
-        color: $BandSite-Black;
+        color: $bandsite-black;
         font-family: $avenir-regular;
         line-height: $m-body-line-height;
         width:96%;
         font-size: 1.25rem;
-    
     }
 }
 
