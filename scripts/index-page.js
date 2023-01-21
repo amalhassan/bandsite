@@ -1,4 +1,6 @@
 import  elementGenerator  from "./elementGenerator.js";
+import { apiKey } from "./const.js";
+
 // declared variables 
 const form = document.getElementById('form');
 // console.log(form);
