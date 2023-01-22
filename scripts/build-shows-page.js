@@ -44,6 +44,9 @@ axios.get(`${baseURL}/showdates?api_key=${apiKEY}`)
         showsSection.prepend(showLabelContainer);
     };
     displayShows(showsList);
+}
+).catch(error => {
+    console.error(error);
 })
 
 // get rows with show information

@@ -1,6 +1,5 @@
 import  elementGenerator  from "./elementGenerator.js";
 import { apiKEY, baseURL } from "./const.js";
-
 // declared variables 
 const form = document.getElementById('form');
 // console.log(form);
@@ -50,43 +49,25 @@ userInput.forEach(input => {
         } 
       });
 });
-// array to store comments
-let commentArray = [
-    {
-        name: "Connor Walton", 
-        date: new Date('02/17/2021'), 
-        comment: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains."
-    }, 
-    {
-        name: "Emilie Beach", 
-        date: new Date('01/09/2021'), 
-        comment: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day."
-    }, 
-    {
-        name: "Miles Acosta", 
-        date: new Date('12/20/2020'), 
-        comment: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough."
-    }
-];
 // function to create elements and display comments
-const displayComment = (ca, index) => {
+const displayComment = (obj, index) => {
     // created nameElement and added styling. Assigned obj.name to innerHTML
     nameElement = elementGenerator('h4', {class: 'conversation__name'});
-    nameElement.innerHTML = ca.name;
-    // created dateElement and added styling. Assigned obj.date to innerHTML
+    nameElement.innerHTML = obj.name;
+    // created dateElement and added styling. Assigned obj.timestamp to innerHTML
     dateElement = elementGenerator('p', {class: 'conversation__date'});
-    dateElement.innerHTML = formatCommentDate(ca.date);
+    dateElement.innerHTML = formatCommentDate(obj.timestamp);
     // created nameDiv, added styling and appended childrem: nameElement, dateElement
     nameDiv = elementGenerator('div', {class: 'conversation__title-section'}, nameElement, dateElement);
     // created commentElement and added styling. Assigned obj.comment to innerHTML
     commentElement = elementGenerator('p', {class: 'conversation__text'});
-    commentElement.innerHTML = ca.comment;
+    commentElement.innerHTML = obj.comment;
     // created commentDiv, added styling and appended children: nameDiv, commentDiv
     commentDiv = elementGenerator('div', {class: 'conversation__comment-div'}, nameDiv, commentElement);
     // created avatarImg and added styling
     avatarImg = elementGenerator('img', {class: 'conversation__avatar', src: "../assets/images/Mohan-muruge.jpg"}); 
     // created containerDiv, added styling and appended children: avatarImg, commentDiv
-    containerDiv = elementGenerator('div', {class: 'conversation__comment-wrapper'}, avatarImg, commentDiv);
+    containerDiv = elementGenerator('div', {class: 'conversation__comment-wrapper', id: obj.id}, avatarImg, commentDiv);
     //comment div prepended into commentSection
     if (index == 0) {
         commentSection.prepend(containerDiv);
@@ -94,35 +75,42 @@ const displayComment = (ca, index) => {
         commentSection.append(containerDiv);
     }
 }
-console.log(commentArray);
-commentArray.forEach((obj, index) => {
-    displayComment(obj, index);
-})
-// function to retrieve submission from user, store new comment into commentArray, and display new comment
+axios.get(`${baseURL}/comments?api_key=${apiKEY}`
+    ).then((res) => {
+        const commentsData = res.data;
+        console.log(commentsData);
+        commentsData.sort((a, b) =>
+            b.timestamp - a.timestamp,
+        )
+        commentsData.forEach((obj, index) => {
+            displayComment(obj, index);
+        })
+    }
+    ).catch(error => {
+        console.error(error);
+    })
+// function to retrieve submission from user, store new comment into commentsData, and display new comment
 const createAndDisplayNewComment = (e) => {
     e.preventDefault();
-    let commentName = form[0].value;
-    // console.log(commentName);
-    let commentText = form[1].value
-    // console.log(commentText);
-    let commentDate = Date.now();
-    // console.log(commentDate);
-    form.reset();
-    let addToCommentArray = (cn, cd, ct) => {
-        let newComment = {
-            name: cn,
-            date: cd,
-            comment: ct
+    axios.post(`${baseURL}/comments?api_key=${apiKEY}`, {
+        name: e.target.name.value,
+        comment: e.target.comment.value
+    }).then (res => {
+        const newComment = res.data;
+        console.log(newComment);
+        axios.get(`${baseURL}/comments?api_key=${apiKEY}`
+        ).then (res => {
+            const newArray = res.data;
+            newArray.sort(
+                (a, b) => b.timestamp - a.timestamp,
+            );
+            console.log(newArray);
+            displayComment(newArray[0], 0);
         }
-        commentArray.push(newComment);
-        commentArray.forEach((item) => {
-            item.date = new Date(item.date).getTime();
-        });
-        commentArray.sort(
-            (a, b) => b.date - a.date,
-        );
-    }
-    addToCommentArray(commentName, commentDate, commentText);
-    displayComment(commentArray[0], 0);
+        ).catch(error => {
+            console.error(error);
+        })
+    })
+    form.reset();       
 }
 form.addEventListener('submit', createAndDisplayNewComment);
