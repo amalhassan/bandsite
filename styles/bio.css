@@ -684,5 +684,26 @@ a, a:active, a:visited, a:hover, a:link {
   width: 96%;
   font-size: 1.25rem;
 }
+.conversation__icon-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.conversation__btn {
+  background-color: white;
+  border-width: 1px;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+.conversation__icon {
+  pointer-events: none;
+}
+.conversation__icon--delete {
+  color: #8b0000;
+}
+.conversation__icon--like {
+  color: red;
+}
 
 /*# sourceMappingURL=bio.css.map */

@@ -254,5 +254,31 @@
         width:96%;
         font-size: 1.25rem;
     }
+    &__icon-container {
+        @include flex($direction: column, $j-content: space-between);
+    }
+    &__btn {
+        background-color: white;
+        border-width: 1px;
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+        &--like {
+
+        }
+        &--delete {
+
+        }
+    }
+    &__icon {
+        pointer-events: none;
+        &--delete {
+            color: #8b0000;
+        }
+        &--like {
+            color: red;
+        }
+    }
 }
+
 
