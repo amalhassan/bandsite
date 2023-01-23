@@ -394,9 +394,14 @@ a, a:active, a:visited, a:hover, a:link {
   flex-direction: column;
   align-self: flex-end;
   align-content: center;
-  row-gap: 20px;
-  height: 90%;
+  row-gap: 15px;
+  height: 100%;
   padding-bottom: 0.8rem;
+}
+@media (min-width: 768px) {
+  .hero__banner-container {
+    row-gap: 10px;
+  }
 }
 @media (min-width: 1280px) {
   .hero__banner-container {

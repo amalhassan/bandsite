@@ -23,9 +23,12 @@
         @include flex($direction: column);
         align-self: flex-end;
         align-content: center;
-        row-gap: 20px;
-        height: 90%;
+        row-gap: 15px;
+        height: 100%;
         @include padding($bottom: $mobile-p-b);
+        @include tablet {
+            row-gap: 10px; 
+        }
         @include desktop {
             flex-direction: row;
             flex-wrap: wrap;
