@@ -2,20 +2,6 @@ import  elementGenerator  from "./elementGenerator.js";
 import { apiKEY, baseURL } from "./const.js";
 // declared variables 
 const form = document.getElementById('form');
-// console.log(form);
-let commentSection = document.getElementById('commentBox');
-let containerDiv;
-let avatarImg;
-let commentDiv;
-let commentElement;
-let nameDiv;
-let nameElement;
-let dateElement;
-let deleteIcon;
-let deleteBtn;
-let likeIcon;
-let likeBtn;
-let iconDiv;
 // function returning a relative date format for comment dates 
 const relativeTimeFormat = new Intl.RelativeTimeFormat('en', {
     numeric: 'auto',
@@ -56,45 +42,34 @@ userInput.forEach(input => {
 });
 // function to create elements and display comments
 const displayComment = (obj, index) => {
+    const commentSection = document.getElementById('commentBox');
     // created nameElement and added styling. Assigned obj.name to innerHTML
-    nameElement = elementGenerator('h4', {class: 'conversation__name'});
+    const nameElement = elementGenerator('h4', {class: 'conversation__name'});
     nameElement.innerHTML = obj.name;
     // created dateElement and added styling. Assigned obj.timestamp to innerHTML
-    dateElement = elementGenerator('p', {class: 'conversation__date'});
+    const dateElement = elementGenerator('p', {class: 'conversation__date'});
     dateElement.innerHTML = formatCommentDate(obj.timestamp);
     // created nameDiv, added styling and appended childrem: nameElement, dateElement
-    nameDiv = elementGenerator('div', {class: 'conversation__title-section'}, nameElement, dateElement);
+    const nameDiv = elementGenerator('div', {class: 'conversation__title-section'}, nameElement, dateElement);
     // created commentElement and added styling. Assigned obj.comment to innerHTML
-    commentElement = elementGenerator('p', {class: 'conversation__text'});
+    const commentElement = elementGenerator('p', {class: 'conversation__text'});
     commentElement.innerHTML = obj.comment;
-    // created deleteIcon and deleteBtn with styling. Appended child into deleteBtn: deleteIcon. Included event listener to retrieve grandparent's Id (.conversation__comment-wrapper) to remove wrapper element when delete button is clicked.
-    deleteIcon = elementGenerator('i', {class: 'fa-solid fa-trash fa-xl conversation__icon'}) 
-    deleteBtn = elementGenerator('button', {class: 'conversation__btn conversation__btn--delete'}, deleteIcon);
-    deleteBtn.addEventListener('click', (e) => {
-        console.log(e);
-        const i = e.srcElement.children[0].classList.add("conversation__icon--delete");
-        console.log(i);
-        const wrapperIdToDelete = e.target.parentNode.parentNode.id;
-        console.log("parent's id:" + wrapperIdToDelete);
-        deleteComment(wrapperIdToDelete);   
-    })
-    // created likeIcon and likeBtn with styling. Appended child into likeBtn: likeIcon. Included event listener to retrieve grandparent's Id (.conversation_comment-wrapper) to update like status when like button is clicked.
-    likeIcon = elementGenerator('i', {class: 'fa-regular fa-heart fa-2xl conversation__icon conversation__icon--like'})
-    likeBtn = elementGenerator('button', {class: 'conversation__btn conversation__btn--like'}, likeIcon);
-    likeBtn.addEventListener('click', (e) => {
-        console.log(e)
-        const wrapperIdToLike = e.target.parentNode.parentNode.id;
-        console.log("gparent's if" + wrapperIdToLike);
-        likeComment(wrapperIdToLike);
-    })
+    // created deleteIcon and deleteBtn with styling. Appended child into deleteBtn: deleteIcon. Included event listener function to retrieve grandparent's Id (.conversation__comment-wrapper) to remove wrapper element when delete button is clicked.
+    const deleteIcon = elementGenerator('i', {class: 'fa-solid fa-trash fa-xl conversation__icon'}) 
+    const deleteBtn = elementGenerator('button', {class: 'conversation__btn'}, deleteIcon);
+    addEventListenerToBtn(deleteBtn, "delete");
+    // created likeIcon and likeBtn with styling. Appended child into likeBtn: likeIcon. Included event listener function to retrieve grandparent's Id (.conversation_comment-wrapper) to update like status when like button is clicked.
+    const likeIcon = elementGenerator('i', {class: 'fa-regular fa-heart fa-2xl conversation__icon conversation__icon--like'})
+    const likeBtn = elementGenerator('button', {class: 'conversation__btn conversation__btn--like'}, likeIcon);
+    addEventListenerToBtn(likeBtn, "liked");
     // created iconDiv, added styling. Appended children:  deleteBtn, likeBtn
-    iconDiv = elementGenerator('div', {class: 'conversation__icon-container'}, deleteBtn, likeBtn);
+    const iconDiv = elementGenerator('div', {class: 'conversation__icon-container'}, deleteBtn, likeBtn);
     // created commentDiv, added styling and appended children: nameDiv, commentDiv
-    commentDiv = elementGenerator('div', {class: 'conversation__comment-div'}, nameDiv, commentElement);
+    const commentDiv = elementGenerator('div', {class: 'conversation__comment-div'}, nameDiv, commentElement);
     // created avatarImg and added styling
-    avatarImg = elementGenerator('img', {class: 'conversation__avatar', src: "../assets/images/Mohan-muruge.jpg", alt: "user's profile-img"}); 
+    const avatarImg = elementGenerator('img', {class: 'conversation__avatar', src: "../assets/images/Mohan-muruge.jpg", alt: "user's profile-img"}); 
     // created containerDiv, added styling and appended children: avatarImg, commentDiv, iconDiv
-    containerDiv = elementGenerator('div', {class: 'conversation__comment-wrapper', id: obj.id}, avatarImg, commentDiv, iconDiv);
+    const containerDiv = elementGenerator('div', {class: 'conversation__comment-wrapper', id: obj.id}, avatarImg, commentDiv, iconDiv);
     //comment div prepended into commentSection
     if (index == 0) {
         commentSection.prepend(containerDiv);
@@ -102,7 +77,6 @@ const displayComment = (obj, index) => {
         commentSection.append(containerDiv);
     }
 }
-
 axios.get(`${baseURL}/comments?api_key=${apiKEY}`
     ).then((res) => {
         const commentsData = res.data;
@@ -141,14 +115,49 @@ const createAndDisplayNewComment = (e) => {
     })
     form.reset();       
 }
-
+const addEventListenerToBtn = (element, action) => {
+    element.addEventListener('click', (e) => {
+        // console.log(e);
+        const wrapperId = e.target.parentNode.parentNode.id;
+        // console.log("gparent's id" + wrapperId);
+        if (action == "liked") {
+            likedComment(wrapperId);
+        } else {
+           const i = e.srcElement.children[0].classList.add("conversation__icon--delete");
+        // console.log(i);
+           deleteComment(wrapperId);
+        }
+        
+    })
+}
+const likedComment = (elementId) => {
+    axios.get(`${baseURL}/comments?api_key=${apiKEY}`)
+    .then((res) => {
+        // console.log(res.data);
+        const data = res.data;
+        data.find(e => {
+            // console.log(e);
+            const i = document.getElementById(elementId);
+            // console.log(i);
+            const heartIconFill = i.querySelector('.conversation__icon-container .conversation__btn--like i');
+            // console.log(heartIconFill);
+            if((e.id == elementId)) {
+                axios.put(`${baseURL}/comments/${elementId}/like?api_key=${apiKEY}`)
+                .then(res => {
+                    console.log(res.data);
+                    heartIconFill.classList.add("fa-solid");
+                })
+            } 
+        })
+    })
+}
 const deleteComment = (elementId) => {
     axios.delete(`${baseURL}/comments/${elementId}/?api_key=${apiKEY}`)
     .then (res => {
         console.log(res)
         // find the element that has this id and remove from the DOM
         const commentToDelete = document.getElementById(elementId);
-        console.log(commentToDelete);
+        // console.log(commentToDelete);
         commentToDelete.remove();
     }
     ).catch((error) => {

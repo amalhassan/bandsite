@@ -61,8 +61,12 @@ a, a:active, a:visited, a:hover, a:link {
     }
     &__title {
         font-family: $avenir-demi;
-        font-size: $m-header;
-        line-height: $m-header-line-height;
+        font-size: 2rem;
+        line-height: 2.2rem;
+        @include desktop {
+            font-size: $m-header;
+            line-height: $m-header-line-height;
+        }
     }
 }
 // Section titles styling
@@ -79,7 +83,6 @@ a, a:active, a:visited, a:hover, a:link {
         }
     }
 }
-
 .field {
     border-radius: 4px;
     border-color: $silver;

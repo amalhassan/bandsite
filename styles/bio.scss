@@ -223,8 +223,9 @@
     &__comment-wrapper {
         font-family: $avenir-regular;
         @include flex($j-content: space-between);
-        @include padding($bottom: $mobile-p-b);
+        @include padding($bottom: $mobile-p-b, $top:$mobile-p-t);
         border-bottom: 2px solid $mercury;
+        column-gap: 10px;
         @include tablet {
             @include padding($top: $td-p-t, $bottom: $td-p-b);
         }
@@ -240,7 +241,7 @@
     }
     &__date {
         color: $silver;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     &__comment-div {
         word-break: break-word;
@@ -259,15 +260,11 @@
     }
     &__btn {
         background-color: white;
-        border-width: 1px;
+        border: none;
         width: 2rem;
         height: 2rem;
         cursor: pointer;
         &--like {
-
-        }
-        &--delete {
-
         }
     }
     &__icon {

@@ -168,6 +168,12 @@
         @extend .btn;
         font-size: $m-body-copy;
         @include padding($top: $mobile-p-t);
+        @include tablet {
+            font-size: 1rem;
+        }
+        @include desktop {
+            font-size: $m-body-copy;
+        }
     }
 }
 .selected {

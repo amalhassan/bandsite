@@ -20,7 +20,7 @@ axios.get(`${baseURL}/showdates?api_key=${apiKEY}`)
     const showsList = res.data;
     // console.log(showsList);
     const displayShows = (showData) => {
-        showData.map((show) => {
+        showData.forEach((show) => {
             // created elements for date information and added styling classes
             let dateLabel = elementGenerator('p', {class: 'shows__label-item--mobile'}, 'Date');
             let dateFormatted = new Date(show.date).toLocaleDateString('en-CA', options).replaceAll(",", "");

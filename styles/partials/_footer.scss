@@ -60,11 +60,13 @@
         @include flex($direction: column);
         row-gap: 35px;
         @include tablet {
+            font-size: 1rem;
             flex-direction: row;
             justify-content: space-between;
             column-gap: 7px;
         }
         @include desktop {
+            font-size: 1.1rem;
             justify-content: space-around;
         }
     }
